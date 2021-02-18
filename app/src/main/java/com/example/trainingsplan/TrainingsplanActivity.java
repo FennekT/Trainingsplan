@@ -17,7 +17,7 @@ public class TrainingsplanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_trainingsplan);
         ScrollView scrollView = findViewById(R.id.scroll);
 
-        Trainingsplan plan = new Trainingsplan("Test1");
+        Trainingsplan plan = new Trainingsplan("Test11");
 
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
