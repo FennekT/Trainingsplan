@@ -17,6 +17,9 @@ public class MainActivity extends AppCompatActivity  {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Button trainingsplan =  findViewById(R.id.Trainingsplan);
+        Button kalendar = findViewById(R.id.Kalendar);
+        Button wasserkonsum = findViewById(R.id.Wasserkonsum);
     }
+
 }
