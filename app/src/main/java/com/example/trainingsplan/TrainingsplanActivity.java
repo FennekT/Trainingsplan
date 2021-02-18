@@ -46,8 +46,8 @@ public class TrainingsplanActivity extends AppCompatActivity implements View.OnC
         // Add the LinearLayout element to the ScrollView
 //        scrollView.addView(linearLayout);
         context = getApplicationContext();
-       createCardViewProgrammatically();
-       scrollView.addView(linearLayout);
+      // createCardViewProgrammatically();
+      // scrollView.addView(linearLayout);
     }
 
     public void createCardViewProgrammatically(){
