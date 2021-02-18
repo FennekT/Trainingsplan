@@ -2,6 +2,8 @@ package com.example.trainingsplan;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
@@ -96,8 +98,10 @@ public class TrainingsplanActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.addButton) {
-            Intent intent = new Intent(this, CreateTrainingsplanFragment.class);
-            startActivity(intent);
+            //Start fragment Transaction and add Fragment to FrameLayout
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.add(R.id.frameLayout, new CreateTrainingsplanFragment());
+            fragmentTransaction.commit();
         }
     }
 }
