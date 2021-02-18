@@ -31,6 +31,8 @@ public class TrainingsplanActivity extends AppCompatActivity implements View.OnC
         linearLayout.addView(button);
         ImageButton addButton = findViewById(R.id.addButton);
 
+        // Attach listener to Buttons
+        addButton.setOnClickListener(this);
         // Add the LinearLayout element to the ScrollView
         scrollView.addView(linearLayout);
     }
