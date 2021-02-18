@@ -11,7 +11,7 @@ public class TrainingsplanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trainingsplan);
-        ScrollView scrollView = findViewById(R.id.scroll);
+        ScrollView penisView = findViewById(R.id.scroll);
 
     }
 }
