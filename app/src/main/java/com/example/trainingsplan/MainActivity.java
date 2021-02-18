@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.Trainingsplan) {
             Intent intent = new Intent(this, TrainingsplanActivity.class);
             startActivity(intent);
+
         }
     }
 }
