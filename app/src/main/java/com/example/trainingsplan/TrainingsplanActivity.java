@@ -22,6 +22,7 @@ public class TrainingsplanActivity extends AppCompatActivity implements View.OnC
     Context context;
     ViewGroup scrollView;
     LinearLayout linearLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,28 +31,26 @@ public class TrainingsplanActivity extends AppCompatActivity implements View.OnC
         Trainingsplan plan = new Trainingsplan("Test11");
 
         ScrollView scrollView = findViewById(R.id.scrollview);
-        LinearLayout linearLayout =(LinearLayout) findViewById(R.id.layout);
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
-
 
 
         // Add Buttons
         //Button button = new Button(this);
-      //  button.setText(plan.getName());
-       // linearLayout.addView(button);
-      //  ImageButton addButton = findViewById(R.id.addButton);
+        //  button.setText(plan.getName());
+        // linearLayout.addView(button);
+        ImageButton addButton = findViewById(R.id.addButton);
 
         // Attach listener to Buttons
-        //addButton.setOnClickListener(this);
+        addButton.setOnClickListener(this);
         // Add the LinearLayout element to the ScrollView
 //        scrollView.addView(linearLayout);
         context = getApplicationContext();
-      // createCardViewProgrammatically();
-      // scrollView.addView(linearLayout);
+        // createCardViewProgrammatically();
+        // scrollView.addView(linearLayout);
     }
 
-    public void createCardViewProgrammatically(){
-
+    public void createCardViewProgrammatically() {
 
 
         CardView card = new CardView(context);
