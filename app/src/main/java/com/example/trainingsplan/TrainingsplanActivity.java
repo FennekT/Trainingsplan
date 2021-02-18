@@ -97,7 +97,7 @@ public class TrainingsplanActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.addButton) {
-            Intent intent = new Intent(this, CreateTrainingsplanActivity.class);
+            Intent intent = new Intent(this, CreateTrainingsplanFragment.class);
             startActivity(intent);
         }
     }

@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class CreateTrainingsplanActivity extends AppCompatActivity {
+public class TrainingsplanOverviewActivity extends AppCompatActivity {
+
+    private String titel;
+    private String beschreibung;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
