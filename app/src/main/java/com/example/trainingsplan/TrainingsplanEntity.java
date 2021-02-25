@@ -13,4 +13,20 @@ public class TrainingsplanEntity {
 
     @ColumnInfo
     private String trainingsplanDescription;
+
+    public String getTrainingsplanTitle() {
+        return trainingsplanTitle;
+    }
+
+    public void setTrainingsplanTitle(String trainingsplanTitle) {
+        this.trainingsplanTitle = trainingsplanTitle;
+    }
+
+    public String getTrainingsplanDescription() {
+        return trainingsplanDescription;
+    }
+
+    public void setTrainingsplanDescription(String trainingsplanDescription) {
+        this.trainingsplanDescription = trainingsplanDescription;
+    }
 }
