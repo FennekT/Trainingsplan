@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,6 +54,8 @@ public class CreateTrainingsplanFragment extends Fragment implements View.OnClic
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        Button createButton = getView().findViewById(R.id.createButton);
+        Button abortButton = getView().findViewById(R.id.abortButton);
     }
 
     @Override
@@ -64,6 +67,13 @@ public class CreateTrainingsplanFragment extends Fragment implements View.OnClic
 
     @Override
     public void onClick(View v) {
+        //Trainingsplan erstellen wenn Button Erstellen gedrueckt wird
+        if (v.getId() == R.id.createButton){
 
+        }
+        //Fragment wieder schliessen wenn Button Abbrechen gedrueckt wird
+        if (v.getId() == R.id.abortButton){
+            getActivity().getFragmentManager().popBackStack();
+        }
     }
 }
