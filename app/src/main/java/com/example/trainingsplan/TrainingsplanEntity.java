@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey;
 @Entity
 public class TrainingsplanEntity {
 
-    @PrimaryKey
-    private int trainingsplanId;
+    @PrimaryKey(autoGenerate = true)
+    private Integer trainingsplanId;
 
     @ColumnInfo
     private String trainingsplanTitle;
