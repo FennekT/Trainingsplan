@@ -2,67 +2,62 @@ package com.example.trainingsplan;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.example.trainingsplan.objekte.Trainingsplan;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class TrainingsplanActivity extends AppCompatActivity implements View.OnClickListener {
-    Context context;
-    ViewGroup scrollView;
-    LinearLayout linearLayout;
+public class TrainingsplanActivity extends AppCompatActivity {
+
+    GridLayout gridLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trainingsplan);
 
-        Trainingsplan plan = new Trainingsplan("Test11");
+        gridLayout = findViewById(R.id.layout);
+        RecyclerView rv = findViewById(R.id.trainingsplanRecyclerView);
+        GridLayoutManager llm = new GridLayoutManager(this, 2);
+        rv.setLayoutManager(llm);
+        //  @SuppressLint("WrongViewCast") ImageButton addButton = findViewById(R.id.addButton);
+        //  addButton.setOnClickListener(this);
 
-        ScrollView scrollView = findViewById(R.id.scrollview);
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.layout);
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
+        Trainingsplan trainingsplan = new Trainingsplan("1", "test", 1);
+        RVAdapter adapter = new RVAdapter(trainingsplan.initializeData());
+        rv.setAdapter(adapter);
 
-
-        // Add Buttons
-        //Button button = new Button(this);
-        //  button.setText(plan.getName());
-        // linearLayout.addView(button);
-        ImageButton addButton = findViewById(R.id.addButton);
-
-        // Attach listener to Buttons
-        addButton.setOnClickListener(this);
-        // Add the LinearLayout element to the ScrollView
-//        scrollView.addView(linearLayout);
-        context = getApplicationContext();
+        FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_btn);
+        addButton.setOnClickListener(v -> {
+//            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//            fragmentTransaction.add(R.id.frameLayout, new CreateTrainingsplanFragment());
+//            fragmentTransaction.commit();
+        });
         // createCardViewProgrammatically();
-        // scrollView.addView(linearLayout);
     }
 
     public void createCardViewProgrammatically() {
 
 
-        CardView card = new CardView(context);
+        CardView card = new CardView(this);
 
         // Set the CardView layoutParams
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        card.setLayoutParams(params);
+
 
         // Set CardView corner radius
         card.setRadius(9);
@@ -80,8 +75,8 @@ public class TrainingsplanActivity extends AppCompatActivity implements View.OnC
         card.setCardElevation(9);
 
         // Initialize a new TextView to put in CardView
-        TextView tv = new TextView(context);
-        tv.setLayoutParams(params);
+        TextView tv = new TextView(this);
+
         tv.setText("CardView\nProgrammatically");
         tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 30);
         tv.setTextColor(Color.RED);
@@ -90,18 +85,8 @@ public class TrainingsplanActivity extends AppCompatActivity implements View.OnC
         card.addView(tv);
 
         // Finally, add the CardView in root layout
-        linearLayout.addView(card);
+        gridLayout.addView(tv);
 
 
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.addButton) {
-            //Start fragment Transaction and add Fragment to FrameLayout
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.add(R.id.frameLayout, new CreateTrainingsplanFragment());
-            fragmentTransaction.commit();
-        }
     }
 }
