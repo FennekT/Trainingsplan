@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -42,29 +41,14 @@ public class TrainingsplanActivity extends AppCompatActivity {
 
         //Fuer Testzwecke
         //Trainingsplan trainingsplan = new Trainingsplan("1", "test", 1,R.drawable.ic_launcher_background);
-        RVAdapter adapter = new RVAdapter(TrainingsplanDatabase.getInstance(this).getTrainingsplanDAO().getTrainingsplan());
-        rv.setAdapter(adapter);
+        //TODO: RD Adapter schmiert bei Entity noch ab
+        //RVAdapter adapter = new RVAdapter(TrainingsplanDatabase.getInstance(this).getTrainingsplanDAO().getTrainingsplan());
+        //rv.setAdapter(adapter);
 
         FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_btn);
-        addButton.setOnClickListener(v -> {
-//            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//            fragmentTransaction.add(R.id.frameLayout, new CreateTrainingsplanFragment());
-//            fragmentTransaction.commit();
-            Intent intent = new Intent(this, CreateTrainingsplanActivity.class);
-            startActivity(intent);
-        });
-
+        addButton.setOnClickListener(v -> setContentView(R.layout.activity_create_trainingsplan));
+        // createCardViewProgrammatically();
     }
-
-
-
-
-
-
-
-
-
-
 
     public void createCardViewProgrammatically() {
 

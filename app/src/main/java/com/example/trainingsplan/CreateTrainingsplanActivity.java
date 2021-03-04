@@ -1,35 +1,37 @@
 package com.example.trainingsplan;
 
-import android.content.Intent;
-import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
-public class CreateTrainingsplanActivity extends AppCompatActivity {
+import com.example.trainingsplan.database.TrainingsplanDatabase;
+import com.example.trainingsplan.database.TrainingsplanEntity;
+
+public class CreateTrainingsplanActivity extends AppCompatActivity implements View.OnClickListener{
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_trainingsplan);
+        Button createButton = findViewById(R.id.createButton);
+        createButton.setOnClickListener(this::onClick);
+        Button abortButton = findViewById(R.id.abortButton);
+        abortButton.setOnClickListener(this::onClick);
+    }
 
-
-
-        Trainingsplan trainingsplan = new Trainingsplan("1", "test", 1,R.drawable.ic_launcher_background);
-
-       /* FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_btn);
-        addButton.setOnClickListener(v -> {
-//            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//            fragmentTransaction.add(R.id.frameLayout, new CreateTrainingsplanFragment());
-//            fragmentTransaction.commit();
-            Intent intent = new Intent(this, CreateTrainingsplanActivity.class);
-            startActivity(intent);
-        });
-
-
-        */
+    @Override
+    public void onClick(View v) {
+        //Trainingsplan erstellen wenn Button Erstellen gedrueckt wird
+        if (v.getId() == R.id.createButton){
+            TrainingsplanDatabase.getInstance(v.getContext())
+                    .getTrainingsplanDAO()
+                    .addTrainingsplan(new TrainingsplanEntity());
+        }
+        //Activity wieder schliessen wenn Button Abbrechen gedrueckt wird
+        if (v.getId() == R.id.abortButton){
+            setContentView(R.layout.activity_trainingsplan);
+        }
     }
 }
