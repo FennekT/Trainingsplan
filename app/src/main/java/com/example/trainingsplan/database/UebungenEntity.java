@@ -1,4 +1,4 @@
-package com.example.trainingsplan;
+package com.example.trainingsplan.database;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
