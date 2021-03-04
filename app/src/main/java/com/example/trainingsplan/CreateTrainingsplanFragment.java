@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.trainingsplan.database.TrainingsplanDatabase;
+import com.example.trainingsplan.database.TrainingsplanEntity;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link CreateTrainingsplanFragment#newInstance} factory method to
@@ -55,7 +58,9 @@ public class CreateTrainingsplanFragment extends Fragment implements View.OnClic
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         Button createButton = getView().findViewById(R.id.createButton);
+        createButton.setOnClickListener(this::onClick);
         Button abortButton = getView().findViewById(R.id.abortButton);
+        abortButton.setOnClickListener(this::onClick);
     }
 
     @Override
@@ -69,7 +74,9 @@ public class CreateTrainingsplanFragment extends Fragment implements View.OnClic
     public void onClick(View v) {
         //Trainingsplan erstellen wenn Button Erstellen gedrueckt wird
         if (v.getId() == R.id.createButton){
-
+            TrainingsplanDatabase.getInstance(v.getContext())
+                    .getTrainingsplanDAO()
+                    .addTrainingsplan(new TrainingsplanEntity());
         }
         //Fragment wieder schliessen wenn Button Abbrechen gedrueckt wird
         if (v.getId() == R.id.abortButton){
