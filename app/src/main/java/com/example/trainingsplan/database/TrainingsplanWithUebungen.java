@@ -11,9 +11,9 @@ public class TrainingsplanWithUebungen {
     public TrainingsplanEntity trainingsplanEntity;
 
     @Relation(
-            parentColumn = "uebungId",
-            entityColumn = "trainingsplanId",
+            parentColumn = "trainingsplanId",
+            entityColumn = "uebungId",
             associateBy = @Junction(TrainingsplanUebungenCrossRefEntity.class)
     )
-    public List<TrainingsplanEntity> trainingsplanEntities;
+    public List<UebungenEntity> trainingsplanEntities;
 }
