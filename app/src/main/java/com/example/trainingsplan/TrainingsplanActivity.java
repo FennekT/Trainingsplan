@@ -38,7 +38,7 @@ public class TrainingsplanActivity extends AppCompatActivity {
         //  @SuppressLint("WrongViewCast") ImageButton addButton = findViewById(R.id.addButton);
         //  addButton.setOnClickListener(this);
 
-        Trainingsplan trainingsplan = new Trainingsplan("1", "test", 1);
+        Trainingsplan trainingsplan = new Trainingsplan("1", "test", 1,R.drawable.ic_launcher_background);
         RVAdapter adapter = new RVAdapter(trainingsplan.initializeData());
         rv.setAdapter(adapter);
 

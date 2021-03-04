@@ -42,14 +42,18 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PlanViewHolder>{
 
     public class PlanViewHolder extends RecyclerView.ViewHolder {
         private final TextView tv;
+        private final ImageView iv;
 
         PlanViewHolder(ViewGroup parent) {
             super(LayoutInflater.from(parent.getContext()).inflate(R.layout.trainingsplan_card, parent, false));
             tv = itemView.findViewById(R.id.textView);
+            iv = itemView.findViewById(R.id.imageView);
         }
 
         public void bindTo(Trainingsplan trainingsplan) {
             tv.setText(trainingsplan.name);
+          iv.setImageResource(trainingsplan.image);
+
         }
     }
 

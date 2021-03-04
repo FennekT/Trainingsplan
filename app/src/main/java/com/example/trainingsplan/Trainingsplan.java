@@ -1,5 +1,10 @@
 package com.example.trainingsplan;
 
+import android.graphics.drawable.Drawable;
+import android.media.Image;
+
+import androidx.annotation.DrawableRes;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,10 +12,12 @@ class Trainingsplan {
     String name;
 
     int id;
+    int image;
 
-    Trainingsplan(String name, String age, int ids) {
+    Trainingsplan(String name, String age, int ids,int images) {
         this.name = name;
         this.id = ids;
+        this.image = images;
     }
 
 
@@ -21,15 +28,12 @@ class Trainingsplan {
 // you want to use the same images.
     public List<Trainingsplan> initializeData(){
         plan = new ArrayList<>();
-        plan.add(new Trainingsplan("1","test",1));
-        plan.add(new Trainingsplan("2","test2",2));
-        plan.add(new Trainingsplan("3","test",1));
-        plan.add(new Trainingsplan("4","test2",2));
-        plan.add(new Trainingsplan("5","test",1));
-        plan.add(new Trainingsplan("6","test2",2));
-        plan.add(new Trainingsplan("7","test",1));
-        plan.add(new Trainingsplan("8","test2",2));
-        plan.add(new Trainingsplan("9","test",1));
-        plan.add(new Trainingsplan("10","test2",2));
+
+        plan.add(new Trainingsplan("1","test2",2,R.drawable.ic_launcher_background));
+        plan.add(new Trainingsplan("2","test2",2,R.drawable.ic_launcher_foreground));
+        plan.add(new Trainingsplan("3","test2",2,R.drawable.ic_launcher_foreground));
+        plan.add(new Trainingsplan("4","test2",2,R.drawable.ic_launcher_background));
+        plan.add(new Trainingsplan("4","test2",2,R.drawable.ic_launcher_foreground));
+        plan.add(new Trainingsplan("4","test2",2,R.drawable.ic_launcher_background));
         return plan;
     }}
