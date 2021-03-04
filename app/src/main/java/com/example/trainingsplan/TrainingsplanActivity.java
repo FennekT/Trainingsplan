@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.example.trainingsplan.database.TrainingsplanDatabase;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class TrainingsplanActivity extends AppCompatActivity {
@@ -39,8 +40,9 @@ public class TrainingsplanActivity extends AppCompatActivity {
         //  @SuppressLint("WrongViewCast") ImageButton addButton = findViewById(R.id.addButton);
         //  addButton.setOnClickListener(this);
 
-        Trainingsplan trainingsplan = new Trainingsplan("1", "test", 1,R.drawable.ic_launcher_background);
-        RVAdapter adapter = new RVAdapter(trainingsplan.initializeData());
+        //Fuer Testzwecke
+        //Trainingsplan trainingsplan = new Trainingsplan("1", "test", 1,R.drawable.ic_launcher_background);
+        RVAdapter adapter = new RVAdapter(TrainingsplanDatabase.getInstance(this).getTrainingsplanDAO().getTrainingsplan());
         rv.setAdapter(adapter);
 
         FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_btn);

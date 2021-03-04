@@ -10,14 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.trainingsplan.database.TrainingsplanEntity;
+
 import java.util.List;
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PlanViewHolder>{
+public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PlanViewHolder> {
 
-    List<Trainingsplan> trainingsplan;
+    List<TrainingsplanEntity> trainingsplanEntities;
 
-    RVAdapter(List<Trainingsplan> trainingsplanList){
-        this.trainingsplan = trainingsplanList;
+    RVAdapter(List<TrainingsplanEntity> trainingsplanEntities) {
+        this.trainingsplanEntities = trainingsplanEntities;
     }
 
     @NonNull
@@ -28,13 +30,14 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PlanViewHolder>{
 
     @Override
     public void onBindViewHolder(PlanViewHolder planViewHolder, int i) {
-        planViewHolder.bindTo(trainingsplan.get(i));
+        planViewHolder.bindTo(trainingsplanEntities.get(i));
     }
 
     @Override
     public int getItemCount() {
-        return trainingsplan.size();
+        return trainingsplanEntities.size();
     }
+
     @Override
     public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
@@ -50,9 +53,10 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PlanViewHolder>{
             iv = itemView.findViewById(R.id.imageView);
         }
 
-        public void bindTo(Trainingsplan trainingsplan) {
-            tv.setText(trainingsplan.name);
-          iv.setImageResource(trainingsplan.image);
+        public void bindTo(TrainingsplanEntity trainingsplanEntity) {
+            tv.setText(trainingsplanEntity.getTrainingsplanTitle());
+            //TODO: image id zu Trainingsplan Entity hinzufuegen
+            //iv.setImageResource(trainingsplanEntity.image);
 
         }
     }
