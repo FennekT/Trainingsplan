@@ -22,6 +22,6 @@ public interface TrainingsplanDAO {
     void deleteTrainingsplan(TrainingsplanEntity trainingsplanEntity);
 
     @Transaction
-    @Query(SELECT * FROM TrainingsplanEntity)
+    @Query("SELECT * FROM TrainingsplanEntity")
     List<TrainingsplanEntity> getTrainingsplanWithUebungen();
 }

@@ -31,4 +31,12 @@ public class TrainingsplanEntity {
     public void setTrainingsplanDescription(String trainingsplanDescription) {
         this.trainingsplanDescription = trainingsplanDescription;
     }
+
+    public Integer getTrainingsplanId() {
+        return trainingsplanId;
+    }
+
+    public void setTrainingsplanId(Integer trainingsplanId) {
+        this.trainingsplanId = trainingsplanId;
+    }
 }
