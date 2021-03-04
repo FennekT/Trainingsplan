@@ -36,9 +36,6 @@ public class TrainingsplanActivity extends AppCompatActivity {
         RecyclerView rv = findViewById(R.id.trainingsplanRecyclerView);
         GridLayoutManager llm = new GridLayoutManager(this, 2);
         rv.setLayoutManager(llm);
-        //  @SuppressLint("WrongViewCast") ImageButton addButton = findViewById(R.id.addButton);
-        //  addButton.setOnClickListener(this);
-
         //Fuer Testzwecke
         //Trainingsplan trainingsplan = new Trainingsplan("1", "test", 1,R.drawable.ic_launcher_background);
         //TODO: RD Adapter schmiert bei Entity noch ab
@@ -46,7 +43,7 @@ public class TrainingsplanActivity extends AppCompatActivity {
         //rv.setAdapter(adapter);
 
         FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_btn);
-        addButton.setOnClickListener(v -> setContentView(R.layout.activity_create_trainingsplan));
+        addButton.setOnClickListener(v -> setContentView(R.layout.activity_trainingsplan_creation));
         // createCardViewProgrammatically();
     }
 
