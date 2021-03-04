@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -47,9 +48,21 @@ public class TrainingsplanActivity extends AppCompatActivity {
 //            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 //            fragmentTransaction.add(R.id.frameLayout, new CreateTrainingsplanFragment());
 //            fragmentTransaction.commit();
+            Intent intent = new Intent(this, CreateTrainingsplanActivity.class);
+            startActivity(intent);
         });
-        // createCardViewProgrammatically();
+
     }
+
+
+
+
+
+
+
+
+
+
 
     public void createCardViewProgrammatically() {
 
