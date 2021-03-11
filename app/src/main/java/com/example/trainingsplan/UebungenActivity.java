@@ -23,4 +23,5 @@ public class UebungenActivity extends AppCompatActivity {
     }
 
     //TODO: Uebung loeschbar machen
+    //TODO: CardView einbauen welchen die Uebungen anzeigt
 }
