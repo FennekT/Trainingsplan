@@ -17,7 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Trainingsplan">
-        <activity android:name=".TrainingsplanCreationActivity"></activity>
+        <activity android:name=".UebungenCreationActivity"></activity>
+        <activity android:name=".UebungenActivity" />
+        <activity android:name=".TrainingsplanCreationActivity" />
         <activity android:name=".TrainingsplanActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

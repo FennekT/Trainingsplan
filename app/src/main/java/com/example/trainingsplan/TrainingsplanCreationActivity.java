@@ -22,6 +22,6 @@ public class TrainingsplanCreationActivity extends AppCompatActivity {
                 .getTrainingsplanDAO()
                 .addTrainingsplan(new TrainingsplanEntity()));
         Button abortButton = findViewById(R.id.abortButton);
-        abortButton.setOnClickListener(v -> setContentView(R.layout.activity_trainingsplan));
+        abortButton.setOnClickListener(v -> finish());
     }
 }

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -42,8 +43,9 @@ public class TrainingsplanActivity extends AppCompatActivity {
         //RVAdapter adapter = new RVAdapter(TrainingsplanDatabase.getInstance(this).getTrainingsplanDAO().getTrainingsplan());
         //rv.setAdapter(adapter);
 
+        Intent intent = new Intent(this, TrainingsplanCreationActivity.class);
         FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_btn);
-        addButton.setOnClickListener(v -> setContentView(R.layout.activity_trainingsplan_creation));
+        addButton.setOnClickListener(v -> startActivity(intent));
         // createCardViewProgrammatically();
     }
 
