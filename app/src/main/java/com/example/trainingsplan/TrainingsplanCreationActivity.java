@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.trainingsplan.database.TrainingsplanEntity;
 import com.example.trainingsplan.database.TrainingsplanViewModel;
 
+import org.w3c.dom.Text;
+
 public class TrainingsplanCreationActivity extends AppCompatActivity {
 
     private TrainingsplanViewModel vm;
@@ -21,13 +23,14 @@ public class TrainingsplanCreationActivity extends AppCompatActivity {
         ViewModelProvider.AndroidViewModelFactory factory = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
         vm = new ViewModelProvider(this, factory).get(TrainingsplanViewModel.class);
 
-        // TODO get Views um die Strings unten aus den Textfeldern holen zu können
+        TextView editTitle = findViewById(R.id.editTitle);
+        TextView editDescription = findViewById(R.id.editDescriptionText);
 
         Button createButton = findViewById(R.id.createButton);
         createButton.setOnClickListener(v -> {
             TrainingsplanEntity entity = new TrainingsplanEntity();
-            entity.setTrainingsplanTitle("IDK");
-            entity.setTrainingsplanDescription("IDK");
+            entity.setTrainingsplanTitle((String) editTitle.getText());
+            entity.setTrainingsplanDescription((String) editDescription.getText());
             vm.insertTrainingsplan(entity);
             finish();
         });

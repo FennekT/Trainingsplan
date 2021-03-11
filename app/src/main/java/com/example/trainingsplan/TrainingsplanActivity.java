@@ -30,9 +30,6 @@ public class TrainingsplanActivity extends AppCompatActivity {
         RecyclerView rv = findViewById(R.id.trainingsplanRecyclerView);
         GridLayoutManager llm = new GridLayoutManager(this, 2);
         rv.setLayoutManager(llm);
-        //Fuer Testzwecke
-        //Trainingsplan trainingsplan = new Trainingsplan("1", "test", 1,R.drawable.ic_launcher_background);
-        //TODO: RD Adapter schmiert bei Entity noch ab
         RVAdapter adapter = new RVAdapter();
         rv.setAdapter(adapter);
 
@@ -43,45 +40,8 @@ public class TrainingsplanActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TrainingsplanCreationActivity.class);
         FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_btn);
         addButton.setOnClickListener(v -> startActivity(intent));
-        // createCardViewProgrammatically();
+        //TODO: Trainingsplan loeschbar machen
+        //TODO: CardView mit Entity verbinden
     }
 
-    public void createCardViewProgrammatically() {
-
-
-        CardView card = new CardView(this);
-
-        // Set the CardView layoutParams
-
-
-        // Set CardView corner radius
-        card.setRadius(9);
-
-        // Set cardView content padding
-        card.setContentPadding(15, 15, 15, 15);
-
-        // Set a background color for CardView
-        card.setCardBackgroundColor(Color.parseColor("#FFC6D6C3"));
-
-        // Set the CardView maximum elevation
-        card.setMaxCardElevation(15);
-
-        // Set CardView elevation
-        card.setCardElevation(9);
-
-        // Initialize a new TextView to put in CardView
-        TextView tv = new TextView(this);
-
-        tv.setText("CardView\nProgrammatically");
-        tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 30);
-        tv.setTextColor(Color.RED);
-
-        // Put the TextView in CardView
-        card.addView(tv);
-
-        // Finally, add the CardView in root layout
-        gridLayout.addView(tv);
-
-
-    }
 }

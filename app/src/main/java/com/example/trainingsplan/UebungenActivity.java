@@ -21,4 +21,6 @@ public class UebungenActivity extends AppCompatActivity {
         FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_btn3);
         addButton.setOnClickListener(v -> startActivity(intent));
     }
+
+    //TODO: Uebung loeschbar machen
 }
