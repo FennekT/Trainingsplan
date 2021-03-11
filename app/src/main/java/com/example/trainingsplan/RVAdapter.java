@@ -1,25 +1,31 @@
 package com.example.trainingsplan;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trainingsplan.database.TrainingsplanEntity;
 
-import java.util.List;
+public class RVAdapter extends ListAdapter<TrainingsplanEntity, RVAdapter.PlanViewHolder> {
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PlanViewHolder> {
+    RVAdapter() {
+        super(new DiffUtil.ItemCallback<TrainingsplanEntity>() {
+            @Override
+            public boolean areItemsTheSame(@NonNull TrainingsplanEntity oldItem, @NonNull TrainingsplanEntity newItem) {
+                return oldItem.getTrainingsplanId().equals(newItem.getTrainingsplanId());
+            }
 
-    List<TrainingsplanEntity> trainingsplanEntities;
-
-    RVAdapter(List<TrainingsplanEntity> trainingsplanEntities) {
-        this.trainingsplanEntities = trainingsplanEntities;
+            @Override
+            public boolean areContentsTheSame(@NonNull TrainingsplanEntity oldItem, @NonNull TrainingsplanEntity newItem) {
+                return oldItem.equals(newItem);
+            }
+        });
     }
 
     @NonNull
@@ -30,17 +36,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PlanViewHolder> {
 
     @Override
     public void onBindViewHolder(PlanViewHolder planViewHolder, int i) {
-        planViewHolder.bindTo(trainingsplanEntities.get(i));
-    }
-
-    @Override
-    public int getItemCount() {
-        return trainingsplanEntities.size();
-    }
-
-    @Override
-    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
-        super.onAttachedToRecyclerView(recyclerView);
+        planViewHolder.bindTo(getItem(i));
     }
 
     public class PlanViewHolder extends RecyclerView.ViewHolder {

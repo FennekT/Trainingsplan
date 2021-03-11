@@ -1,10 +1,5 @@
 package com.example.trainingsplan;
 
-import android.graphics.drawable.Drawable;
-import android.media.Image;
-
-import androidx.annotation.DrawableRes;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -10,7 +10,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(version = 1, entities = {TrainingsplanEntity.class, UebungenEntity.class, TrainingsplanUebungenCrossRefEntity.class})
-public abstract class TrainingsplanDatabase extends RoomDatabase {
+abstract class TrainingsplanDatabase extends RoomDatabase {
 
     private static TrainingsplanDatabase INSTANCE;
 
@@ -20,7 +20,6 @@ public abstract class TrainingsplanDatabase extends RoomDatabase {
         if (null == INSTANCE){
             synchronized (TrainingsplanDatabase.class){
                 INSTANCE = Room.databaseBuilder(context,TrainingsplanDatabase.class,"database")
-                        .createFromAsset("database")
                         .build();
             }
         }

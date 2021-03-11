@@ -1,32 +1,25 @@
 package com.example.trainingsplan;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.TypedValue;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.GridLayout;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.example.trainingsplan.database.TrainingsplanDatabase;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.trainingsplan.database.TrainingsplanViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class TrainingsplanActivity extends AppCompatActivity {
 
     GridLayout gridLayout;
+    private TrainingsplanViewModel vm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +33,12 @@ public class TrainingsplanActivity extends AppCompatActivity {
         //Fuer Testzwecke
         //Trainingsplan trainingsplan = new Trainingsplan("1", "test", 1,R.drawable.ic_launcher_background);
         //TODO: RD Adapter schmiert bei Entity noch ab
-        //RVAdapter adapter = new RVAdapter(TrainingsplanDatabase.getInstance(this).getTrainingsplanDAO().getTrainingsplan());
-        //rv.setAdapter(adapter);
+        RVAdapter adapter = new RVAdapter();
+        rv.setAdapter(adapter);
+
+        ViewModelProvider.AndroidViewModelFactory factory = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
+        vm = new ViewModelProvider(this, factory).get(TrainingsplanViewModel.class);
+        vm.getTrainingsplanList().observe(this, adapter::submitList);
 
         Intent intent = new Intent(this, TrainingsplanCreationActivity.class);
         FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_btn);
