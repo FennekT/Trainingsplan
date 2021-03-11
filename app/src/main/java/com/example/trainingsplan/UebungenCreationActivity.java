@@ -1,21 +1,27 @@
 package com.example.trainingsplan;
 
-import android.app.Service;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.trainingsplan.database.TrainingsplanDatabase;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.example.trainingsplan.database.TrainingsplanViewModel;
 import com.example.trainingsplan.database.UebungenEntity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 public class UebungenCreationActivity extends AppCompatActivity {
+
+    private TrainingsplanViewModel vm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uebungen_creation);
+
+        ViewModelProvider.AndroidViewModelFactory factory = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
+        vm = new ViewModelProvider(this, factory).get(TrainingsplanViewModel.class);
+
         Button doneButton = findViewById(R.id.doneButton);
         TextView gewichtView = findViewById(R.id.editGewicht);
         TextView titelView = findViewById(R.id.editUebungTitel);
@@ -30,7 +36,7 @@ public class UebungenCreationActivity extends AppCompatActivity {
     }
 
     private void onDone(UebungenEntity uebungenEntity){
-        TrainingsplanDatabase.getInstance(this).getUebungenDAO().updateUebung(uebungenEntity);
+        vm.insertUebung(uebungenEntity);
         finish();
     }
 
