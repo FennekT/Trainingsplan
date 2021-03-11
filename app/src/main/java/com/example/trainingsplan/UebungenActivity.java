@@ -2,6 +2,7 @@ package com.example.trainingsplan;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +21,9 @@ public class UebungenActivity extends AppCompatActivity {
         intent.putExtra(extraString, new UebungenEntity());
         FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_btn3);
         addButton.setOnClickListener(v -> startActivity(intent));
+        Intent neueUebungIntent = new Intent(this,UebungenOverviewActivity.class);
+        Button uebungHinzufuegen = findViewById(R.id.uebungHinzufuegen);
+        uebungHinzufuegen.setOnClickListener(v -> startActivity(neueUebungIntent));
     }
 
     //TODO: Uebung loeschbar machen
