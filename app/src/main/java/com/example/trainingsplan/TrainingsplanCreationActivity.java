@@ -30,8 +30,8 @@ public class TrainingsplanCreationActivity extends AppCompatActivity {
         Button createButton = findViewById(R.id.createButton);
         createButton.setOnClickListener(v -> {
             TrainingsplanEntity entity = new TrainingsplanEntity();
-            entity.setTrainingsplanTitle((String) editTitle.getText());
-            entity.setTrainingsplanDescription((String) editDescription.getText());
+            entity.setTrainingsplanTitle( String.valueOf(editTitle.getText()));
+            entity.setTrainingsplanDescription(String.valueOf(editDescription.getText()));
             vm.insertTrainingsplan(entity);
             finish();
         });
