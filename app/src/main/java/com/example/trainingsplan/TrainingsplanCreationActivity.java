@@ -10,8 +10,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.trainingsplan.database.TrainingsplanEntity;
 import com.example.trainingsplan.database.TrainingsplanViewModel;
 
-import org.w3c.dom.Text;
-
 public class TrainingsplanCreationActivity extends AppCompatActivity {
 
     private TrainingsplanViewModel vm;

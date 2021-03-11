@@ -10,7 +10,11 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.trainingsplan.database.TrainingsplanViewModel;
 import com.example.trainingsplan.database.UebungenEntity;
 
+import java.io.Serializable;
+
 public class UebungenCreationActivity extends AppCompatActivity {
+
+    public static final String EXTRA_UEBUNG = "com.example.trainingsplan.UebungenCreationActivity.extra.Uebung";
 
     private TrainingsplanViewModel vm;
 
@@ -18,6 +22,9 @@ public class UebungenCreationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uebungen_creation);
+
+        // TODO get Extra um eine ggf. Mitgegebene Übung zu öffnen und bearbeioten zu können
+        UebungenEntity extra = (UebungenEntity) getIntent().getSerializableExtra(EXTRA_UEBUNG);
 
         ViewModelProvider.AndroidViewModelFactory factory = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
         vm = new ViewModelProvider(this, factory).get(TrainingsplanViewModel.class);

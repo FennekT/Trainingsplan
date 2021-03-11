@@ -5,6 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 public class UebungenEntity implements Serializable {
@@ -62,5 +63,22 @@ public class UebungenEntity implements Serializable {
 
     public void setUebungId(Integer uebungId) {
         this.uebungId = uebungId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UebungenEntity that = (UebungenEntity) o;
+        return uebungOutdoor == that.uebungOutdoor &&
+                Objects.equals(uebungId, that.uebungId) &&
+                Objects.equals(uebungName, that.uebungName) &&
+                Objects.equals(uebungGewicht, that.uebungGewicht) &&
+                Objects.equals(uebungWiederholung, that.uebungWiederholung);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(uebungId, uebungName, uebungGewicht, uebungWiederholung, uebungOutdoor);
     }
 }

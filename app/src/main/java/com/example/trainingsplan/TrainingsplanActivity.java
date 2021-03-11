@@ -2,7 +2,6 @@ package com.example.trainingsplan;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.GridLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -14,7 +13,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class TrainingsplanActivity extends AppCompatActivity {
 
-    GridLayout gridLayout;
     private TrainingsplanViewModel vm;
 
     @Override
@@ -22,11 +20,10 @@ public class TrainingsplanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trainingsplan);
 
-        gridLayout = findViewById(R.id.layout);
-        RecyclerView rv = findViewById(R.id.trainingsplanRecyclerViewOverview);
+        RecyclerView rv = findViewById(R.id.trainingsplanRecyclerView);
         GridLayoutManager llm = new GridLayoutManager(this, 2);
         rv.setLayoutManager(llm);
-        RVAdapter adapter = new RVAdapter();
+        TrainingsplanAdapter adapter = new TrainingsplanAdapter();
         rv.setAdapter(adapter);
 
         ViewModelProvider.AndroidViewModelFactory factory = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());

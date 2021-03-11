@@ -20,7 +20,7 @@ interface TrainingsplanDAO {
     void deleteTrainingsplan(TrainingsplanEntity trainingsplanEntity);
 
     @Query("SELECT * FROM TrainingsplanEntity")
-    LiveData<List<TrainingsplanEntity>> getTrainingsplan();
+    LiveData<List<TrainingsplanWithUebungen>> getTrainingsplan();
 
     @Query("SELECT * FROM TrainingsplanEntity")
     LiveData<List<TrainingsplanWithUebungen>> getTrainingsplanWithUebungen();

@@ -11,7 +11,7 @@ public class TrainingsplanViewModel extends AndroidViewModel {
 
     private final TrainingsplanDAO trainingsplanDAO;
     private final UebungenDAO uebungenDAO;
-    private final LiveData<List<TrainingsplanEntity>> allTrainingsplanList;
+    private final LiveData<List<TrainingsplanWithUebungen>> allTrainingsplanList;
 
     public TrainingsplanViewModel(Application application) {
         super(application);
@@ -21,7 +21,7 @@ public class TrainingsplanViewModel extends AndroidViewModel {
         uebungenDAO = db.getUebungenDAO();
     }
 
-    public LiveData<List<TrainingsplanEntity>> getTrainingsplanList() {
+    public LiveData<List<TrainingsplanWithUebungen>> getTrainingsplanList() {
         return allTrainingsplanList;
     }
 
