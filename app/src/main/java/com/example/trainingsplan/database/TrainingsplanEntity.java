@@ -6,8 +6,10 @@ import androidx.room.PrimaryKey;
 
 import java.util.Objects;
 
+import java.io.Serializable;
+
 @Entity
-public class TrainingsplanEntity {
+public class TrainingsplanEntity implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     private Integer trainingsplanId;

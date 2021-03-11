@@ -4,6 +4,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".UebungenCreationActivity">
 
+    <EditText
+        android:id="@+id/editGewicht"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#454545"
+        android:backgroundTint="#454545"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:text="Gewicht"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.250" />
+
+    <EditText
+        android:id="@+id/editWiederholung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#454545"
+        android:backgroundTint="#454545"
+        android:ems="10"
+        android:inputType="number|numberDecimal"
+        android:text="Wiederholungen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.375" />
+
+    <EditText
+        android:id="@+id/editUebungTitel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#454545"
+        android:backgroundTint="#454545"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Titel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.125" />
+
+    <CheckBox
+        android:id="@+id/outdoorCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoText="false"
+        android:background="#454545"
+        android:backgroundTint="#454545"
+        android:text="Outdoor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.573" />
+
+    <Button
+        android:id="@+id/doneButton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Done"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.845"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.887" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal" />
 </androidx.constraintlayout.widget.ConstraintLayout>
