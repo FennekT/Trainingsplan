@@ -2,60 +2,78 @@ package com.example.trainingsplan;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.trainingsplan.database.TrainingsplanEntity;
 import com.example.trainingsplan.database.TrainingsplanViewModel;
 import com.example.trainingsplan.database.UebungenEntity;
 
 import java.io.Serializable;
 
 public class UebungenCreationActivity extends AppCompatActivity {
-
+  private  UebungenEntity uebungEntity;
     public static final String EXTRA_UEBUNG = "com.example.trainingsplan.UebungenCreationActivity.extra.Uebung";
 
     private TrainingsplanViewModel vm;
+    private TextView gewichtView;
+    private TextView titelView;
+    private TextView wiederholungView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uebungen_creation);
 
-        // TODO get Extra um eine ggf. Mitgegebene Übung zu öffnen und bearbeiten zu können
-        UebungenEntity extra = (UebungenEntity) getIntent().getSerializableExtra(EXTRA_UEBUNG);
 
         ViewModelProvider.AndroidViewModelFactory factory = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
         vm = new ViewModelProvider(this, factory).get(TrainingsplanViewModel.class);
-
+        Button backButton = findViewById(R.id.backbtn);
         Button doneButton = findViewById(R.id.doneButton);
-        TextView gewichtView = findViewById(R.id.editGewicht);
-        TextView titelView = findViewById(R.id.editUebungTitel);
-        TextView wiederholungView = findViewById(R.id.editWiederholung);
+        gewichtView = findViewById(R.id.editGewicht);
+        titelView = findViewById(R.id.editUebungTitel);
+        wiederholungView = findViewById(R.id.editWiederholung);
+        CheckBox outdoorCheckbox = findViewById(R.id.outdoorCheckbox);
+        // TODO get Extra um eine ggf. Mitgegebene Übung zu öffnen und bearbeiten zu können
+if ((UebungenEntity) getIntent().getSerializableExtra(EXTRA_UEBUNG)!=null){
 
-        UebungenEntity uebungEntity = (UebungenEntity) getIntent().getSerializableExtra(UebungenActivity.extraString);
+     uebungEntity = (UebungenEntity) getIntent().getSerializableExtra(EXTRA_UEBUNG);
+}
+else {
+     uebungEntity = new UebungenEntity();
+
+}
+        gewichtView.setOnClickListener(v -> onGewicht(uebungEntity, gewichtView.getText().toString()));
+        titelView.setOnClickListener(v -> onTitel(uebungEntity, String.valueOf(titelView.getText().toString())));
+        wiederholungView.setOnClickListener(v -> onWiederholung(uebungEntity, wiederholungView.getText().toString()));
+        outdoorCheckbox.setOnClickListener(v -> onOutdoor(uebungEntity, outdoorCheckbox.isChecked()));
+        backButton.setOnClickListener(v -> finish());
         doneButton.setOnClickListener(v -> onDone(uebungEntity));
-        gewichtView.setOnClickListener(v -> onGewicht(uebungEntity,gewichtView.getText()));
-        titelView.setOnClickListener(v -> onTitel(uebungEntity, String.valueOf(gewichtView.getText())));
-        wiederholungView.setOnClickListener(v -> onWiederholung(uebungEntity,gewichtView.getText()));
+
 
     }
 
-    private void onDone(UebungenEntity uebungenEntity){
+    private void onDone(UebungenEntity uebungenEntity) {
         vm.insertUebung(uebungenEntity);
         finish();
     }
 
-    private void onGewicht(UebungenEntity uebungenEntity, CharSequence gewicht){
+    private void onGewicht(UebungenEntity uebungenEntity, CharSequence gewicht) {
         uebungenEntity.setUebungGewicht(Double.parseDouble((String) gewicht));
     }
 
-    private void onTitel(UebungenEntity uebungenEntity, String titel){
+    private void onTitel(UebungenEntity uebungenEntity, String titel) {
         uebungenEntity.setUebungName(titel);
     }
 
-    private void onWiederholung(UebungenEntity uebungenEntity, CharSequence wiederholung){
-        uebungenEntity.setUebungWiederholung(Integer.parseInt((String) wiederholung));
+    private void onWiederholung(UebungenEntity uebungenEntity, String wiederholung) {
+        uebungenEntity.setUebungWiederholung(Integer.parseInt(wiederholung));
+    }
+
+    private void onOutdoor(UebungenEntity uebungenEntity, Boolean outDoor) {
+        uebungenEntity.setUebungOutdoor(outDoor);
     }
 }
