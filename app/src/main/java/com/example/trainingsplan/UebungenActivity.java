@@ -35,9 +35,6 @@ public class UebungenActivity extends AppCompatActivity {
 
         FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_uebung_btn);
         addButton.setOnClickListener(v -> {
-            // TODO der Teil muss in die UebungenOverviewActivity zum + Button
-//            Intent intent = new Intent(this, UebungenCreationActivity.class);
-//            intent.putExtra(UebungenCreationActivity.EXTRA_UEBUNG, new UebungenEntity());
             Intent intent = new Intent(this, UebungenOverviewActivity.class);
             startActivity(intent);
         });

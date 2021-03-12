@@ -28,13 +28,14 @@ public class TrainingsplanActivity extends AppCompatActivity {
 
         ViewModelProvider.AndroidViewModelFactory factory = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
         vm = new ViewModelProvider(this, factory).get(TrainingsplanViewModel.class);
+        //aktuallisiert view wenn neuer plan erstellt wird
         vm.getTrainingsplanList().observe(this, adapter::submitList);
 
         Intent intent = new Intent(this, TrainingsplanCreationActivity.class);
         FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_btn);
         addButton.setOnClickListener(v -> startActivity(intent));
         //TODO: Trainingsplan loeschbar machen
-        //TODO: CardView mit Entity verbinden
+
         //TODO: Druck auf Cardview muss diesen in der UebungenActivity oeffnen
     }
 
