@@ -22,7 +22,6 @@ public class UebungenOverviewActivity extends AppCompatActivity implements Seria
         addUebung.setOnClickListener(v -> startActivity(intent));
     }
 
-    //TODO: Hier muss eine CardView mit allen existierenden Uebungen sein.
 
 
 }

@@ -23,7 +23,7 @@ public class UebungenCreationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uebungen_creation);
 
-        // TODO get Extra um eine ggf. Mitgegebene Übung zu öffnen und bearbeioten zu können
+        // TODO get Extra um eine ggf. Mitgegebene Übung zu öffnen und bearbeiten zu können
         UebungenEntity extra = (UebungenEntity) getIntent().getSerializableExtra(EXTRA_UEBUNG);
 
         ViewModelProvider.AndroidViewModelFactory factory = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());

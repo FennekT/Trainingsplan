@@ -36,7 +36,6 @@ public class TrainingsplanActivity extends AppCompatActivity {
         addButton.setOnClickListener(v -> startActivity(intent));
         //TODO: Trainingsplan loeschbar machen
 
-        //TODO: Druck auf Cardview muss diesen in der UebungenActivity oeffnen
     }
 
 }
