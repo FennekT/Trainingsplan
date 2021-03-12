@@ -33,7 +33,8 @@ public class TrainingsplanActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, TrainingsplanCreationActivity.class);
         FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_btn);
-        addButton.setOnClickListener(v -> startActivity(intent));
+        addButton.setOnClickListener(v ->
+                startActivity(intent));
         //TODO: Trainingsplan loeschbar machen
 
     }

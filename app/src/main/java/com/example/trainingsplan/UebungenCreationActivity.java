@@ -41,6 +41,7 @@ public class UebungenCreationActivity extends AppCompatActivity {
 if ((UebungenEntity) getIntent().getSerializableExtra(EXTRA_UEBUNG)!=null){
 
      uebungEntity = (UebungenEntity) getIntent().getSerializableExtra(EXTRA_UEBUNG);
+     //titelView.setText(uebungEntity.getUebungName());
 }
 else {
      uebungEntity = new UebungenEntity();

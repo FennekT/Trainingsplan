@@ -16,7 +16,6 @@ import com.example.trainingsplan.database.TrainingsplanViewModel;
 import com.example.trainingsplan.database.UebungenEntity;
 
 public class TrainingsplanUebungenAdapter extends ListAdapter<UebungenEntity, TrainingsplanUebungenAdapter.UebungViewHolder> {
-    private TrainingsplanViewModel vm;
 
     TrainingsplanUebungenAdapter() {
         super(new DiffUtil.ItemCallback<UebungenEntity>() {

@@ -28,11 +28,13 @@ public class UebungenActivity extends AppCompatActivity {
         TrainingsplanUebungenAdapter adapter = new TrainingsplanUebungenAdapter();
         rv.setAdapter(adapter);
 
-        TrainingsplanWithUebungen extra = (TrainingsplanWithUebungen) getIntent().getSerializableExtra(EXTRA_TRAININGSPLAN);
+     /*   TrainingsplanWithUebungen extra = (TrainingsplanWithUebungen) getIntent().getSerializableExtra(EXTRA_TRAININGSPLAN);
         if (null != extra) {
             adapter.submitList(extra.trainingsplanEntities);
         }
 
+
+      */
 
 
         FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_uebung_btn);
