@@ -7,13 +7,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.trainingsplan.database.TrainingsplanViewModel;
 import com.example.trainingsplan.database.UebungenEntity;
 
 public class TrainingsplanUebungenAdapter extends ListAdapter<UebungenEntity, TrainingsplanUebungenAdapter.UebungViewHolder> {
+    private TrainingsplanViewModel vm;
 
     TrainingsplanUebungenAdapter() {
         super(new DiffUtil.ItemCallback<UebungenEntity>() {
@@ -49,6 +52,10 @@ public class TrainingsplanUebungenAdapter extends ListAdapter<UebungenEntity, Tr
             super(LayoutInflater.from(parent.getContext()).inflate(R.layout.uebungen_card, parent, false));
             tv = itemView.findViewById(R.id.uebung_titel);
             iv = itemView.findViewById(R.id.imageView);
+          //  itemView.setOnLongClickListener(v -> {
+
+
+           // });
             itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(itemView.getContext(), UebungenCreationActivity.class);
                 intent.putExtra(UebungenCreationActivity.EXTRA_UEBUNG, boundEntity);

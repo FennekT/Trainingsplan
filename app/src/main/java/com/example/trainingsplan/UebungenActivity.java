@@ -33,6 +33,8 @@ public class UebungenActivity extends AppCompatActivity {
             adapter.submitList(extra.trainingsplanEntities);
         }
 
+
+
         FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_uebung_btn);
         addButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, UebungenOverviewActivity.class);

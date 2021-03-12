@@ -23,12 +23,12 @@ public class TrainingsplanViewModel extends AndroidViewModel {
         uebungenListe = uebungenDAO.getUebung();
     }
 
-    public LiveData<List<TrainingsplanWithUebungen>> getTrainingsplanList() {
-        return allTrainingsplanList;
-    }
-
     public void insertTrainingsplan(TrainingsplanEntity entity) {
         TrainingsplanDatabase.databaseExecutor.execute(() -> trainingsplanDAO.addTrainingsplan(entity));
+    }
+
+    public LiveData<List<TrainingsplanWithUebungen>> getTrainingsplanList() {
+        return allTrainingsplanList;
     }
 
     public void insertUebung(UebungenEntity uebungenEntity) {
@@ -37,5 +37,9 @@ public class TrainingsplanViewModel extends AndroidViewModel {
 
     public LiveData<List<UebungenEntity>> getUebung() {
         return uebungenListe;
+    }
+
+    public void deleteUebung(UebungenEntity uebungenEntity) {
+        TrainingsplanDatabase.databaseExecutor.execute(() -> uebungenDAO.deleteUebung(uebungenEntity));
     }
 }
