@@ -48,7 +48,7 @@ else {
 
 }
         gewichtView.setOnClickListener(v -> onGewicht(uebungEntity, gewichtView.getText().toString()));
-        titelView.setOnClickListener(v -> onTitel(uebungEntity, String.valueOf(titelView.getText().toString())));
+        titelView.setOnClickListener(v -> onTitel(uebungEntity, titelView.getText().toString()));
         wiederholungView.setOnClickListener(v -> onWiederholung(uebungEntity, wiederholungView.getText().toString()));
         outdoorCheckbox.setOnClickListener(v -> onOutdoor(uebungEntity, outdoorCheckbox.isChecked()));
         backButton.setOnClickListener(v -> finish());
