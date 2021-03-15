@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trainingsplan.database.TrainingsplanEntity;
+import com.example.trainingsplan.database.TrainingsplanViewModel;
 import com.example.trainingsplan.database.TrainingsplanWithUebungen;
 import com.example.trainingsplan.database.UebungenEntity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -16,6 +18,7 @@ public class UebungenActivity extends AppCompatActivity {
 
     public static final String EXTRA_TRAININGSPLAN = "com.example.trainingsplan.UebungenActivity.extra.Trainingsplan";
     public static final String extraString = "neueUebung";
+    private TrainingsplanViewModel vm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +38,10 @@ public class UebungenActivity extends AppCompatActivity {
 
 
       */
-
+        ViewModelProvider.AndroidViewModelFactory factory = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
+        vm = new ViewModelProvider(this, factory).get(TrainingsplanViewModel.class);
+        //aktuallisiert view wenn neuer plan erstellt wird
+        vm.getUebung().observe(this, adapter::submitList);
 
         FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_uebung_btn);
         addButton.setOnClickListener(v -> {
