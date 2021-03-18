@@ -5,7 +5,9 @@ import androidx.room.Junction;
 import androidx.room.Relation;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 public class TrainingsplanWithUebungen implements Serializable {
     @Embedded
@@ -16,5 +18,5 @@ public class TrainingsplanWithUebungen implements Serializable {
             entityColumn = "uebungId",
             associateBy = @Junction(TrainingsplanUebungenCrossRefEntity.class)
     )
-    public List<UebungenEntity> trainingsplanEntities;
+    public List<UebungenEntity> uebungenEntities;
 }

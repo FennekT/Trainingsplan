@@ -20,7 +20,14 @@ import com.example.trainingsplan.database.TrainingsplanViewModel;
 import com.example.trainingsplan.database.UebungenEntity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 public class TrainingsplanUebungenAdapter extends ListAdapter<UebungenEntity, TrainingsplanUebungenAdapter.UebungViewHolder> {
+
+    Set<UebungenEntity> selectedSet = new HashSet<>();
 
     TrainingsplanUebungenAdapter() {
         super(new DiffUtil.ItemCallback<UebungenEntity>() {
@@ -45,6 +52,10 @@ public class TrainingsplanUebungenAdapter extends ListAdapter<UebungenEntity, Tr
     @Override
     public void onBindViewHolder(UebungViewHolder uebungViewHolder, int i) {
         uebungViewHolder.bindTo(getItem(i));
+    }
+
+    public Set<UebungenEntity> getSelectedEntities() {
+        return selectedSet;
     }
 
     public class UebungViewHolder extends RecyclerView.ViewHolder {
@@ -73,9 +84,10 @@ public class TrainingsplanUebungenAdapter extends ListAdapter<UebungenEntity, Tr
 
                 if (selectBtn.getVisibility() == View.VISIBLE) {
                     selectBtn.setVisibility(View.INVISIBLE);
+                    selectedSet.remove(boundEntity);
                 } else {
                     selectBtn.setVisibility(View.VISIBLE);
-
+                    selectedSet.add(boundEntity);
                 }
 
             });

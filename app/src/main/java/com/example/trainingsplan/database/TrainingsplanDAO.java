@@ -6,6 +6,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Transaction;
 
 import java.util.List;
 
@@ -16,13 +17,17 @@ interface TrainingsplanDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void addTrainingsplan(TrainingsplanEntity trainingsplanEntity);
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void connectUebungen(List<TrainingsplanUebungenCrossRefEntity> connectedUebungen);
+
     @Delete
     void deleteTrainingsplan(TrainingsplanEntity trainingsplanEntity);
 
+    @Transaction
     @Query("SELECT * FROM TrainingsplanEntity")
     LiveData<List<TrainingsplanWithUebungen>> getTrainingsplan();
 
+    @Transaction
     @Query("SELECT * FROM TrainingsplanEntity")
     LiveData<List<TrainingsplanWithUebungen>> getTrainingsplanWithUebungen();
-
 }

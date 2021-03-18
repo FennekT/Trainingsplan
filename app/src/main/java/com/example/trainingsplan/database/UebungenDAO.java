@@ -8,6 +8,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import java.util.List;
+import java.util.Set;
 
 @Dao
 public interface UebungenDAO {
@@ -23,5 +24,10 @@ public interface UebungenDAO {
 
     @Query("SELECT * FROM UebungenEntity")
     LiveData<List<UebungenEntity>> getUebung();
+
+    @Query("SELECT * FROM UebungenEntity INNER JOIN TrainingsplanUebungenCrossRefEntity as t " +
+            "WHERE t.trainingsplanId = :trainingsplanId " +
+            "GROUP BY t.uebungId")
+    LiveData<List<UebungenEntity>> getUebungenForTrainingsplan(Integer trainingsplanId);
 
 }
