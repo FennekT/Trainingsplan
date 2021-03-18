@@ -1,8 +1,11 @@
 package com.example.trainingsplan;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trainingsplan.database.TrainingsplanViewModel;
 import com.example.trainingsplan.database.UebungenEntity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class TrainingsplanUebungenAdapter extends ListAdapter<UebungenEntity, TrainingsplanUebungenAdapter.UebungViewHolder> {
 
@@ -45,6 +49,7 @@ public class TrainingsplanUebungenAdapter extends ListAdapter<UebungenEntity, Tr
 
     public class UebungViewHolder extends RecyclerView.ViewHolder {
         private final TextView tv;
+        private final FloatingActionButton selectBtn;
         private final ImageView iv;
         private UebungenEntity boundEntity;
 
@@ -52,14 +57,27 @@ public class TrainingsplanUebungenAdapter extends ListAdapter<UebungenEntity, Tr
             super(LayoutInflater.from(parent.getContext()).inflate(R.layout.uebungen_card, parent, false));
             tv = itemView.findViewById(R.id.uebung_titel);
             iv = itemView.findViewById(R.id.imageView);
-          //  itemView.setOnLongClickListener(v -> {
+            selectBtn = itemView.findViewById(R.id.floatingActionButton4);
+            selectBtn.setVisibility(View.INVISIBLE);
 
-
-           // });
+            itemView.setOnLongClickListener(v -> {
+              Intent intent = new Intent(itemView.getContext(), UebungenCreationActivity.class);
+             intent.putExtra(UebungenCreationActivity.EXTRA_UEBUNG, boundEntity);
+             itemView.getContext().startActivity(intent);
+                return false;
+            });
             itemView.setOnClickListener(v -> {
-                Intent intent = new Intent(itemView.getContext(), UebungenCreationActivity.class);
-                intent.putExtra(UebungenCreationActivity.EXTRA_UEBUNG, boundEntity);
-                itemView.getContext().startActivity(intent);
+                //  Intent intent = new Intent(itemView.getContext(), UebungenCreationActivity.class);
+                //  intent.putExtra(UebungenCreationActivity.EXTRA_UEBUNG, boundEntity);
+                // itemView.getContext().startActivity(intent);
+
+                if (selectBtn.getVisibility() == View.VISIBLE) {
+                    selectBtn.setVisibility(View.INVISIBLE);
+                } else {
+                    selectBtn.setVisibility(View.VISIBLE);
+
+                }
+
             });
         }
 

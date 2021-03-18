@@ -51,4 +51,5 @@ public class UebungenActivity extends AppCompatActivity {
     }
 
     //TODO: Uebung loeschbar machen
+    //TODO Uebungen filtern im moment werden alle uebungen im Plan angezeit es sollen aber nur die sichtbar sein die in den Plan gehören
 }

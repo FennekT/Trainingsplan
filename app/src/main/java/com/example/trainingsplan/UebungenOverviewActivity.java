@@ -22,6 +22,7 @@ public class UebungenOverviewActivity extends AppCompatActivity implements Seria
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uebungen_overview);
         FloatingActionButton addUebung = findViewById(R.id.add_uebung_btn2);
+        FloatingActionButton add = findViewById(R.id.floatingActionButton);
         Intent intent = new Intent(this, UebungenCreationActivity.class);
         intent.putExtra(UebungenCreationActivity.EXTRA_UEBUNG, new UebungenEntity());
         addUebung.setOnClickListener(v -> startActivity(intent));
