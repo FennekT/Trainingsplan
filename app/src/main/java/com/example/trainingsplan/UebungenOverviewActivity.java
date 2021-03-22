@@ -30,7 +30,6 @@ public class UebungenOverviewActivity extends AppCompatActivity implements Seria
 
         createUebung.setOnClickListener(v -> {
             Intent intent = new Intent(this, UebungenCreationActivity.class);
-            intent.putExtra(UebungenCreationActivity.EXTRA_UEBUNG, new UebungenEntity());
             startActivity(intent);
         });
 
