@@ -40,6 +40,10 @@ public class UebungenCreationActivity extends AppCompatActivity {
         if (getIntent().getSerializableExtra(EXTRA_UEBUNG) != null) {
 
             uebungEntity = (UebungenEntity) getIntent().getSerializableExtra(EXTRA_UEBUNG);
+            gewichtView.setText(String.valueOf(uebungEntity.getUebungGewicht()));
+            wiederholungView.setText(String.valueOf(uebungEntity.getUebungWiederholung()));
+            titelView.setText(uebungEntity.getUebungName());
+
         } else {
             uebungEntity = new UebungenEntity();
 
@@ -54,7 +58,11 @@ public class UebungenCreationActivity extends AppCompatActivity {
         uebungenEntity.setUebungGewicht(Double.parseDouble(String.valueOf(gewichtView.getText())));
       uebungenEntity.setUebungWiederholung(Integer.parseInt(String.valueOf(wiederholungView.getText())));
         uebungenEntity.setUebungName(String.valueOf(titelView.getText()));
-        vm.insertUebung(uebungenEntity);
+        if (uebungenEntity.getUebungId() != null) {
+            vm.updateUebung(uebungenEntity);
+        } else {
+            vm.insertUebung(uebungenEntity);
+        }
         finish();
     }
 
