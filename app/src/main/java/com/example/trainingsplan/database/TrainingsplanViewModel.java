@@ -63,6 +63,10 @@ uebungenDAO.deleteUebungen(set);
         TrainingsplanDatabase.databaseExecutor.execute(() -> uebungenDAO.addUebung(uebungenEntity));
     }
 
+    public void updateUebung(UebungenEntity uebungenEntity){
+        TrainingsplanDatabase.databaseExecutor.execute(() -> uebungenDAO.updateUebung(uebungenEntity));
+    }
+
     public LiveData<List<UebungenEntity>> getUebung() {
         return uebungenListe;
     }
