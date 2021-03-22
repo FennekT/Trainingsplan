@@ -25,6 +25,10 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Dieser Adapter ist fuer die dynamische Anzeige aller Uebungen im Recyclerview der
+ * TrainigsplanUebungenActivity zustaendig.
+ */
 public class TrainingsplanUebungenAdapter extends ListAdapter<UebungenEntity, TrainingsplanUebungenAdapter.UebungViewHolder> {
 
     Set<UebungenEntity> selectedSet = new HashSet<>();

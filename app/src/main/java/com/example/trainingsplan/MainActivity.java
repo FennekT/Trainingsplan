@@ -7,6 +7,9 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Diese Activity oeffnet sich beim Start der App. Zeigt alle potenziellen Module dieser App an.
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override

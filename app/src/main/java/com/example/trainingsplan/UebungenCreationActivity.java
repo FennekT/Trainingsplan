@@ -14,6 +14,10 @@ import com.example.trainingsplan.database.UebungenEntity;
 
 import java.io.Serializable;
 
+/**
+ * Activity zur Erstellung einer Uebung. Diese Activity oeffnet sich auch, wenn man eine
+ * Uebung bearbeiten moechte.
+ */
 public class UebungenCreationActivity extends AppCompatActivity {
     private UebungenEntity uebungEntity;
     public static final String EXTRA_UEBUNG = "com.example.trainingsplan.UebungenCreationActivity.extra.Uebung";
@@ -27,6 +31,7 @@ public class UebungenCreationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uebungen_creation);
+        setTitle("Erstelle eine Übung");
 
 
         ViewModelProvider.AndroidViewModelFactory factory = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
@@ -36,7 +41,6 @@ public class UebungenCreationActivity extends AppCompatActivity {
         gewichtView = findViewById(R.id.editGewicht);
         titelView = findViewById(R.id.editUebungTitel);
         wiederholungView = findViewById(R.id.editWiederholung);
-        // TODO get Extra um eine ggf. Mitgegebene Übung zu öffnen und bearbeiten zu können
         if (getIntent().getSerializableExtra(EXTRA_UEBUNG) != null) {
 
             uebungEntity = (UebungenEntity) getIntent().getSerializableExtra(EXTRA_UEBUNG);
@@ -55,9 +59,15 @@ public class UebungenCreationActivity extends AppCompatActivity {
     }
 
     private void onDone(UebungenEntity uebungenEntity) {
+        if(!String.valueOf(gewichtView).isEmpty()){
         uebungenEntity.setUebungGewicht(Double.parseDouble(String.valueOf(gewichtView.getText())));
+        }
+        if(!String.valueOf(wiederholungView).isEmpty()){
         uebungenEntity.setUebungWiederholung(Integer.parseInt(String.valueOf(wiederholungView.getText())));
+        }
+        if(!String.valueOf(titelView).isEmpty()){
         uebungenEntity.setUebungName(String.valueOf(titelView.getText()));
+        }
         if (uebungenEntity.getUebungId() != null) {
             vm.updateUebung(uebungenEntity);
         } else {

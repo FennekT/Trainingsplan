@@ -16,7 +16,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Set;
 
-public class UebungenActivity extends AppCompatActivity {
+/**
+ * Activity welche alle Uebungen des konkreten Trainingsplans beinhaltet
+ */
+public class TrainingsplanUebungenActivity extends AppCompatActivity {
 
     public static final String EXTRA_TRAININGSPLAN = "com.example.trainingsplan.UebungenActivity.extra.Trainingsplan";
     private TrainingsplanViewModel vm;

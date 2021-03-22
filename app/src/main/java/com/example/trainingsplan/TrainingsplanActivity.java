@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.trainingsplan.database.TrainingsplanViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+/**
+ * Activity welche alle existierenden Trainigsplaene anzeigt
+ */
 public class TrainingsplanActivity extends AppCompatActivity {
 
     private TrainingsplanViewModel vm;
@@ -19,6 +22,7 @@ public class TrainingsplanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trainingsplan);
+        setTitle("Trainigspläne");
 
         RecyclerView rv = findViewById(R.id.trainingsplanRecyclerView);
         GridLayoutManager llm = new GridLayoutManager(this, 2);

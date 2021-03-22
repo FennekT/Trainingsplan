@@ -16,6 +16,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.io.Serializable;
 import java.util.Set;
 
+/**
+ * Overview welche alle existierenden Uebungen anzeigt. Von hier aus koennen per Longclick die
+ * einzelnen Uebungen auch bearbeitet werden.
+ */
 public class UebungenOverviewActivity extends AppCompatActivity implements Serializable {
 
     public static final String EXTRA_TRAININGSPLAN = "com.example.trainingsplan.UebungenOverviewActivity.extra.Trainingsplan";
@@ -27,6 +31,7 @@ public class UebungenOverviewActivity extends AppCompatActivity implements Seria
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uebungen_overview);
         FloatingActionButton createUebung = findViewById(R.id.add_uebung_btn2);
+        setTitle("Alle Übungen");
 
         createUebung.setOnClickListener(v -> {
             Intent intent = new Intent(this, UebungenCreationActivity.class);

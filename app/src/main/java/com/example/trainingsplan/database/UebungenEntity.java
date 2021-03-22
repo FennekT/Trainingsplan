@@ -7,6 +7,9 @@ import androidx.room.PrimaryKey;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Entity fuer Uebungen
+ */
 @Entity
 public class UebungenEntity implements Serializable {
 

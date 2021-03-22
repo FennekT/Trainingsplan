@@ -9,6 +9,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Ermoeglicht zugriff auf Trainingsplan mit allen zugehoerigen Uebungen
+ */
 public class TrainingsplanWithUebungen implements Serializable {
     @Embedded
     public TrainingsplanEntity trainingsplanEntity;

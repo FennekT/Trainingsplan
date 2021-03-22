@@ -19,7 +19,7 @@
         android:theme="@style/Theme.Trainingsplan">
         <activity android:name=".UebungenOverviewActivity"></activity>
         <activity android:name=".UebungenCreationActivity" />
-        <activity android:name=".UebungenActivity" />
+        <activity android:name=".TrainingsplanUebungenActivity" />
         <activity android:name=".TrainingsplanCreationActivity" />
         <activity android:name=".TrainingsplanActivity" />
         <activity android:name=".MainActivity">

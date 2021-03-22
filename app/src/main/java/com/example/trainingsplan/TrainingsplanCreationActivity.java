@@ -10,6 +10,9 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.trainingsplan.database.TrainingsplanEntity;
 import com.example.trainingsplan.database.TrainingsplanViewModel;
 
+/**
+ * Activity zur Erstellung eines Trainingsplans
+ */
 public class TrainingsplanCreationActivity extends AppCompatActivity {
 
     private TrainingsplanViewModel vm;
@@ -18,6 +21,7 @@ public class TrainingsplanCreationActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trainingsplan_creation);
+        setTitle("Erstelle einen Trainingsplan");
 
         ViewModelProvider.AndroidViewModelFactory factory = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
         vm = new ViewModelProvider(this, factory).get(TrainingsplanViewModel.class);

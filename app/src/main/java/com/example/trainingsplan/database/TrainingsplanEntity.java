@@ -8,6 +8,9 @@ import java.util.Objects;
 
 import java.io.Serializable;
 
+/**
+ * Entity fuer Trainigsplaene
+ */
 @Entity
 public class TrainingsplanEntity implements Serializable {
 

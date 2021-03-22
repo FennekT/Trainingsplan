@@ -11,9 +11,12 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.trainingsplan.database.TrainingsplanEntity;
 import com.example.trainingsplan.database.TrainingsplanWithUebungen;
 
+/**
+ * Dieser Adapter ist fuer die dynamische Anzeige aller Trainigsplaene im Recyclerview der
+ * TrainigsplanActivity zustaendig.
+ */
 public class TrainingsplanAdapter extends ListAdapter<TrainingsplanWithUebungen, TrainingsplanAdapter.PlanViewHolder> {
 
     TrainingsplanAdapter() {
@@ -51,8 +54,8 @@ public class TrainingsplanAdapter extends ListAdapter<TrainingsplanWithUebungen,
             tv = itemView.findViewById(R.id.textView);
             iv = itemView.findViewById(R.id.imageView);
             itemView.setOnClickListener(v -> {
-                Intent intent = new Intent(itemView.getContext(), UebungenActivity.class);
-                intent.putExtra(UebungenActivity.EXTRA_TRAININGSPLAN, boundEntity);
+                Intent intent = new Intent(itemView.getContext(), TrainingsplanUebungenActivity.class);
+                intent.putExtra(TrainingsplanUebungenActivity.EXTRA_TRAININGSPLAN, boundEntity);
                 itemView.getContext().startActivity(intent);
             });
         }

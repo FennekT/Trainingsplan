@@ -10,6 +10,9 @@ import androidx.room.Update;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * DAO fuer Uebungen
+ */
 @Dao
 public interface UebungenDAO {
 

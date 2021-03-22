@@ -9,6 +9,9 @@ import androidx.room.RoomDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * Datenbank
+ */
 @Database(version = 1, entities = {TrainingsplanEntity.class, UebungenEntity.class, TrainingsplanUebungenCrossRefEntity.class})
 abstract class TrainingsplanDatabase extends RoomDatabase {
 

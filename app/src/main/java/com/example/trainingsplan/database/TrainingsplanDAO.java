@@ -11,6 +11,9 @@ import androidx.room.Transaction;
 import java.util.List;
 
 
+/**
+ * DAO fuer Trainingsplaene
+ */
 @Dao
 interface TrainingsplanDAO {
 

@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Vereinfacht Datenbankzugriff
+ */
 public class TrainingsplanViewModel extends AndroidViewModel {
 
     private final TrainingsplanDAO trainingsplanDAO;
