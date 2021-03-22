@@ -45,23 +45,30 @@ public class UebungenOverviewActivity extends AppCompatActivity implements Seria
         //aktuallisiert view wenn neuer plan erstellt wird
         vm.getUebung().observe(this, adapter::submitList);
 
-        TrainingsplanWithUebungen openTrainingsplan = (TrainingsplanWithUebungen) getIntent().getSerializableExtra(EXTRA_TRAININGSPLAN);
 
+        TrainingsplanWithUebungen openTrainingsplan = (TrainingsplanWithUebungen) getIntent().getSerializableExtra(EXTRA_TRAININGSPLAN);
         if (null != openTrainingsplan) {
-            adapter.submitList(openTrainingsplan.uebungenEntities);
+
             FloatingActionButton delete = findViewById(R.id.floatingActionButton2);
             delete.setOnClickListener(v -> {
+                adapter.submitList(openTrainingsplan.uebungenEntities);
                 Set<UebungenEntity> selectedEntities = adapter.getSelectedEntities();
                 openTrainingsplan.uebungenEntities.addAll(selectedEntities);
                 vm.deleteUebungen(selectedEntities);
+                selectedEntities.clear();
             });
-        if (null != openTrainingsplan) {
-            adapter.submitList(openTrainingsplan.uebungenEntities);
+
+            TrainingsplanWithUebungen openTrainingsplan2 = (TrainingsplanWithUebungen) getIntent().getSerializableExtra(EXTRA_TRAININGSPLAN);
+
+            if (null != openTrainingsplan2) {
+
             FloatingActionButton add = findViewById(R.id.floatingActionButton);
-            add.setOnClickListener(v -> {
-                Set<UebungenEntity> selectedEntities = adapter.getSelectedEntities();
-                openTrainingsplan.uebungenEntities.addAll(selectedEntities);
-                vm.insertTrainingsplanWithUebungen(openTrainingsplan);
+                add.setOnClickListener(v -> {
+                    adapter.submitList(openTrainingsplan2.uebungenEntities);
+                    Set<UebungenEntity> selectedEntities = adapter.getSelectedEntities();
+                openTrainingsplan2.uebungenEntities.addAll(selectedEntities);
+                vm.insertTrainingsplanWithUebungen(openTrainingsplan2);
+                selectedEntities.clear();
                 finish();
             });
         }
