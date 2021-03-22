@@ -46,6 +46,15 @@ public class UebungenOverviewActivity extends AppCompatActivity implements Seria
         vm.getUebung().observe(this, adapter::submitList);
 
         TrainingsplanWithUebungen openTrainingsplan = (TrainingsplanWithUebungen) getIntent().getSerializableExtra(EXTRA_TRAININGSPLAN);
+
+        if (null != openTrainingsplan) {
+            adapter.submitList(openTrainingsplan.uebungenEntities);
+            FloatingActionButton delete = findViewById(R.id.floatingActionButton2);
+            delete.setOnClickListener(v -> {
+                Set<UebungenEntity> selectedEntities = adapter.getSelectedEntities();
+                openTrainingsplan.uebungenEntities.addAll(selectedEntities);
+                vm.deleteUebungen(openTrainingsplan);
+            });
         if (null != openTrainingsplan) {
             adapter.submitList(openTrainingsplan.uebungenEntities);
             FloatingActionButton add = findViewById(R.id.floatingActionButton);
@@ -61,4 +70,4 @@ public class UebungenOverviewActivity extends AppCompatActivity implements Seria
     }
 
 
-}
+}}

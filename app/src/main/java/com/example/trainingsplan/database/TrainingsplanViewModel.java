@@ -61,9 +61,6 @@ public class TrainingsplanViewModel extends AndroidViewModel {
         return uebungenListe;
     }
 
-    public void deleteUebung(UebungenEntity uebungenEntity) {
-        TrainingsplanDatabase.databaseExecutor.execute(() -> uebungenDAO.deleteUebung(uebungenEntity));
-    }
 
     public LiveData<List<UebungenEntity>> getUebungenForTrainingsplan(TrainingsplanWithUebungen openTrainingsplan) {
         return uebungenDAO.getUebungenForTrainingsplan(openTrainingsplan.trainingsplanEntity.getTrainingsplanId());

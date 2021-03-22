@@ -48,12 +48,11 @@ public class UebungenActivity extends AppCompatActivity {
         TrainingsplanWithUebungen openTrainingsplan = (TrainingsplanWithUebungen) getIntent().getSerializableExtra(EXTRA_TRAININGSPLAN);
         if (null != openTrainingsplan) {
             adapter.submitList(openTrainingsplan.uebungenEntities);
-            FloatingActionButton add = findViewById(R.id.floatingActionButton2);
-            add.setOnClickListener(v -> {
+            FloatingActionButton delete = findViewById(R.id.floatingActionButton2);
+            delete.setOnClickListener(v -> {
                 Set<UebungenEntity> selectedEntities = adapter.getSelectedEntities();
                 openTrainingsplan.uebungenEntities.addAll(selectedEntities);
                 vm.deleteTrainingsplanWithUebungen(openTrainingsplan);
-                finish();
             });
 
 

@@ -17,7 +17,7 @@ public interface UebungenDAO {
     void addUebung(UebungenEntity uebungenEntity);
 
     @Delete
-    void deleteUebung(UebungenEntity uebungenEntity);
+    void deleteUebung(List<UebungenEntity> uebungenEntity);
 
     @Update
     void updateUebung(UebungenEntity uebungenEntity);
