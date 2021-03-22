@@ -28,9 +28,9 @@ public interface UebungenDAO {
     @Query("SELECT * FROM UebungenEntity")
     LiveData<List<UebungenEntity>> getUebung();
 
-    @Query("SELECT * FROM UebungenEntity INNER JOIN TrainingsplanUebungenCrossRefEntity as t " +
-            "WHERE t.trainingsplanId = :trainingsplanId " +
-            "GROUP BY t.uebungId")
+    @Query("SELECT * FROM UebungenEntity as u " +
+            "INNER JOIN TrainingsplanUebungenCrossRefEntity as t on u.uebungId = t.uebungId " +
+            "WHERE t.trainingsplanId = :trainingsplanId")
     LiveData<List<UebungenEntity>> getUebungenForTrainingsplan(Integer trainingsplanId);
 
 }

@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.trainingsplan.database.TrainingsplanEntity;
@@ -21,7 +22,6 @@ public class TrainingsplanCreationActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trainingsplan_creation);
-        setTitle("Erstelle einen Trainingsplan");
 
         ViewModelProvider.AndroidViewModelFactory factory = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
         vm = new ViewModelProvider(this, factory).get(TrainingsplanViewModel.class);

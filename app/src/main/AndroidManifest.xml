@@ -17,11 +17,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Trainingsplan">
-        <activity android:name=".UebungenOverviewActivity"></activity>
-        <activity android:name=".UebungenCreationActivity" />
-        <activity android:name=".TrainingsplanUebungenActivity" />
-        <activity android:name=".TrainingsplanCreationActivity" />
-        <activity android:name=".TrainingsplanActivity" />
+        <activity
+            android:name=".UebungenOverviewActivity"
+            android:label="Alle Übungen" />
+        <activity
+            android:name=".UebungenCreationActivity"
+            android:label="Übung erstellen" />
+        <activity
+            android:name=".TrainingsplanUebungenActivity"
+            android:label="Übungen" />
+        <activity
+            android:name=".TrainingsplanCreationActivity"
+            android:label="Trainingsplan erstellen" />
+        <activity
+            android:name=".TrainingsplanActivity"
+            android:label="Trainingspläne" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

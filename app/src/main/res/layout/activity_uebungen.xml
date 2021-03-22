@@ -14,9 +14,10 @@
         android:theme="@style/Theme.Trainingsplan">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarOverview"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            app:titleTextColor="@color/white"
             android:background="@color/black"
             app:popupTheme="@style/Theme.Trainingsplan" />
 
@@ -41,7 +42,7 @@
         android:src="@android:drawable/ic_input_add" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
+        android:id="@+id/delete_trainingsplan_uebung_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"

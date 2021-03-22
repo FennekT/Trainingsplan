@@ -1,28 +1,20 @@
 package com.example.trainingsplan;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.trainingsplan.database.TrainingsplanViewModel;
 import com.example.trainingsplan.database.UebungenEntity;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -31,7 +23,7 @@ import java.util.Set;
  */
 public class TrainingsplanUebungenAdapter extends ListAdapter<UebungenEntity, TrainingsplanUebungenAdapter.UebungViewHolder> {
 
-    Set<UebungenEntity> selectedSet = new HashSet<>();
+    private final Set<UebungenEntity> selectedSet = new HashSet<>();
 
     TrainingsplanUebungenAdapter() {
         super(new DiffUtil.ItemCallback<UebungenEntity>() {
@@ -64,7 +56,7 @@ public class TrainingsplanUebungenAdapter extends ListAdapter<UebungenEntity, Tr
 
     public class UebungViewHolder extends RecyclerView.ViewHolder {
         private final TextView tv;
-        private final FloatingActionButton selectBtn;
+        private final ImageView selected_icon;
         private final ImageView iv;
         private UebungenEntity boundEntity;
 
@@ -72,26 +64,21 @@ public class TrainingsplanUebungenAdapter extends ListAdapter<UebungenEntity, Tr
             super(LayoutInflater.from(parent.getContext()).inflate(R.layout.uebungen_card, parent, false));
             tv = itemView.findViewById(R.id.uebung_titel);
             iv = itemView.findViewById(R.id.imageView);
-            selectBtn = itemView.findViewById(R.id.floatingActionButton4);
-            selectBtn.setVisibility(View.INVISIBLE);
+            selected_icon = itemView.findViewById(R.id.select_icon);
 
             itemView.setOnLongClickListener(v -> {
-              Intent intent = new Intent(itemView.getContext(), UebungenCreationActivity.class);
-             intent.putExtra(UebungenCreationActivity.EXTRA_UEBUNG, boundEntity);
-             itemView.getContext().startActivity(intent);
+                Intent intent = new Intent(itemView.getContext(), UebungenCreationActivity.class);
+                intent.putExtra(UebungenCreationActivity.EXTRA_UEBUNG, boundEntity);
+                itemView.getContext().startActivity(intent);
                 return false;
             });
             itemView.setOnClickListener(v -> {
-                //  Intent intent = new Intent(itemView.getContext(), UebungenCreationActivity.class);
-                //  intent.putExtra(UebungenCreationActivity.EXTRA_UEBUNG, boundEntity);
-                // itemView.getContext().startActivity(intent);
-
-                if (selectBtn.getVisibility() == View.VISIBLE) {
-                    selectBtn.setVisibility(View.INVISIBLE);
-                    selectedSet.remove(boundEntity);
-                } else {
-                    selectBtn.setVisibility(View.VISIBLE);
+                itemView.setSelected(!itemView.isSelected());
+                selected_icon.setVisibility(itemView.isSelected() ? View.VISIBLE : View.INVISIBLE);
+                if (itemView.isSelected()) {
                     selectedSet.add(boundEntity);
+                } else {
+                    selectedSet.remove(boundEntity);
                 }
 
             });
@@ -101,6 +88,13 @@ public class TrainingsplanUebungenAdapter extends ListAdapter<UebungenEntity, Tr
         public void bindTo(UebungenEntity uebungenEntity) {
             this.boundEntity = uebungenEntity;
             tv.setText(uebungenEntity.getUebungName());
+
+            selected_icon.setVisibility(itemView.isSelected() ? View.VISIBLE : View.INVISIBLE);
+            if (itemView.isSelected()) {
+                selectedSet.add(boundEntity);
+            } else {
+                selectedSet.remove(boundEntity);
+            }
 
             //TODO: image id zu Trainingsplan Entity hinzufuegen BONUS AUFGABE
 //            iv.setImageResource(trainingsplanEntity.image);

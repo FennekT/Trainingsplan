@@ -6,7 +6,9 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.room.util.StringUtil;
 
 import com.example.trainingsplan.database.TrainingsplanEntity;
 import com.example.trainingsplan.database.TrainingsplanViewModel;
@@ -31,8 +33,6 @@ public class UebungenCreationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uebungen_creation);
-        setTitle("Erstelle eine Übung");
-
 
         ViewModelProvider.AndroidViewModelFactory factory = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
         vm = new ViewModelProvider(this, factory).get(TrainingsplanViewModel.class);
@@ -59,15 +59,15 @@ public class UebungenCreationActivity extends AppCompatActivity {
     }
 
     private void onDone(UebungenEntity uebungenEntity) {
-        if(!String.valueOf(gewichtView).isEmpty()){
-        uebungenEntity.setUebungGewicht(Double.parseDouble(String.valueOf(gewichtView.getText())));
+        try {
+            uebungenEntity.setUebungName(String.valueOf(titelView.getText()));
+            uebungenEntity.setUebungGewicht(Double.parseDouble(String.valueOf(gewichtView.getText())));
+            uebungenEntity.setUebungWiederholung(Integer.parseInt(String.valueOf(wiederholungView.getText())));
+        } catch (Exception e) {
+            // TODO Hinweismeldung/Fehlertexte an die Inputs anhängen
+            return;
         }
-        if(!String.valueOf(wiederholungView).isEmpty()){
-        uebungenEntity.setUebungWiederholung(Integer.parseInt(String.valueOf(wiederholungView.getText())));
-        }
-        if(!String.valueOf(titelView).isEmpty()){
-        uebungenEntity.setUebungName(String.valueOf(titelView.getText()));
-        }
+
         if (uebungenEntity.getUebungId() != null) {
             vm.updateUebung(uebungenEntity);
         } else {

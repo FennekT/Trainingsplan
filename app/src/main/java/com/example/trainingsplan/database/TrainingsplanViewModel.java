@@ -42,19 +42,18 @@ public class TrainingsplanViewModel extends AndroidViewModel {
         });
     }
 
-    public void deleteTrainingsplanWithUebungen(TrainingsplanWithUebungen pojo) {
+    public void deleteUebungenFromTrainingsplan(TrainingsplanEntity trainingsplan, Set<UebungenEntity> toDisconnect) {
         TrainingsplanDatabase.databaseExecutor.execute(() -> {
-            trainingsplanDAO.addTrainingsplan(pojo.trainingsplanEntity);
-            List<TrainingsplanUebungenCrossRefEntity> trainingsplanUebungenCrossRefEntities = pojo.uebungenEntities.stream()
-                    .map(uebungenEntity -> new TrainingsplanUebungenCrossRefEntity(pojo.trainingsplanEntity.getTrainingsplanId(), uebungenEntity.getUebungId()))
+            List<TrainingsplanUebungenCrossRefEntity> trainingsplanUebungenCrossRefEntities = toDisconnect.stream()
+                    .map(uebungenEntity -> new TrainingsplanUebungenCrossRefEntity(trainingsplan.getTrainingsplanId(), uebungenEntity.getUebungId()))
                     .collect(Collectors.toList());
-            trainingsplanDAO.deleteTrainingsplan(trainingsplanUebungenCrossRefEntities);
+            trainingsplanDAO.deleteUebungenFromTrainingsplan(trainingsplanUebungenCrossRefEntities);
         });
     }
-public void deleteUebungen(Set<UebungenEntity> set) {
-        TrainingsplanDatabase.databaseExecutor.execute(() -> {
 
-uebungenDAO.deleteUebungen(set);
+    public void deleteUebungen(Set<UebungenEntity> set) {
+        TrainingsplanDatabase.databaseExecutor.execute(() -> {
+            uebungenDAO.deleteUebungen(set);
         });
     }
 
@@ -66,7 +65,7 @@ uebungenDAO.deleteUebungen(set);
         TrainingsplanDatabase.databaseExecutor.execute(() -> uebungenDAO.addUebung(uebungenEntity));
     }
 
-    public void updateUebung(UebungenEntity uebungenEntity){
+    public void updateUebung(UebungenEntity uebungenEntity) {
         TrainingsplanDatabase.databaseExecutor.execute(() -> uebungenDAO.updateUebung(uebungenEntity));
     }
 

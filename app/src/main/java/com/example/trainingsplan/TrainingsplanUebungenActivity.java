@@ -2,9 +2,12 @@ package com.example.trainingsplan;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,6 +34,9 @@ public class TrainingsplanUebungenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uebungen);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         RecyclerView rv = findViewById(R.id.trainingsplanUebungenRecyclerView);
         GridLayoutManager llm = new GridLayoutManager(this, 2);
         rv.setLayoutManager(llm);
@@ -51,22 +57,33 @@ public class TrainingsplanUebungenActivity extends AppCompatActivity {
         TrainingsplanWithUebungen openTrainingsplan = (TrainingsplanWithUebungen) getIntent().getSerializableExtra(EXTRA_TRAININGSPLAN);
         if (null != openTrainingsplan) {
             adapter.submitList(openTrainingsplan.uebungenEntities);
-            FloatingActionButton delete = findViewById(R.id.floatingActionButton2);
-            delete.setOnClickListener(v -> {
-                Set<UebungenEntity> selectedEntities = adapter.getSelectedEntities();
-                openTrainingsplan.uebungenEntities.addAll(selectedEntities);
-                vm.deleteTrainingsplanWithUebungen(openTrainingsplan);
+
+            FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_uebung_btn);
+            addButton.setOnClickListener(v -> {
+                Intent intent = new Intent(this, UebungenOverviewActivity.class);
+                intent.putExtra(UebungenOverviewActivity.EXTRA_TRAININGSPLAN, openTrainingsplan);
+                startActivity(intent);
             });
+        }
 
-
-        FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_uebung_btn);
-        addButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, UebungenOverviewActivity.class);
-            intent.putExtra(UebungenOverviewActivity.EXTRA_TRAININGSPLAN, openTrainingsplan);
-            startActivity(intent);
-        });
+        //TODO: Uebung loeschbar machen
+        //TODO Uebungen filtern im moment werden alle uebungen im Plan angezeit es sollen aber nur die sichtbar sein die in den Plan gehören
     }
 
-    //TODO: Uebung loeschbar machen
-    //TODO Uebungen filtern im moment werden alle uebungen im Plan angezeit es sollen aber nur die sichtbar sein die in den Plan gehören
-}}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_trainingsplan_uebungen, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.delete) {
+            Set<UebungenEntity> selectedEntities = adapter.getSelectedEntities();
+            vm.deleteUebungenFromTrainingsplan(openTrainingsplan.trainingsplanEntity, selectedEntities);
+            selectedEntities.clear();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}

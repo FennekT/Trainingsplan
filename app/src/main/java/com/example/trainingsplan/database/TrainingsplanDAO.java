@@ -9,6 +9,7 @@ import androidx.room.Query;
 import androidx.room.Transaction;
 
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -24,7 +25,7 @@ interface TrainingsplanDAO {
     void connectUebungen(List<TrainingsplanUebungenCrossRefEntity> connectedUebungen);
 
     @Delete
-    void deleteTrainingsplan(List<TrainingsplanUebungenCrossRefEntity> connectedUebungen);
+    void deleteUebungenFromTrainingsplan(List<TrainingsplanUebungenCrossRefEntity> crossRefEntities);
 
     @Transaction
     @Query("SELECT * FROM TrainingsplanEntity")

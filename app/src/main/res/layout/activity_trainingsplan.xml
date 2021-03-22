@@ -14,9 +14,10 @@
         android:theme="@style/Theme.Trainingsplan">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarOverview"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            app:titleTextColor="@color/white"
             android:background="@color/black"
             app:popupTheme="@style/Theme.Trainingsplan" />
 
