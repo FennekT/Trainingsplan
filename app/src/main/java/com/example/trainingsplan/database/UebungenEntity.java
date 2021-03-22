@@ -22,8 +22,6 @@ public class UebungenEntity implements Serializable {
     @ColumnInfo
     private Integer uebungWiederholung;
 
-    @ColumnInfo
-    private boolean uebungOutdoor;
 
     public String getUebungName() {
         return uebungName;
@@ -49,13 +47,6 @@ public class UebungenEntity implements Serializable {
         this.uebungWiederholung = uebungWiederholung;
     }
 
-    public boolean isUebungOutdoor() {
-        return uebungOutdoor;
-    }
-
-    public void setUebungOutdoor(boolean uebungOutdoor) {
-        this.uebungOutdoor = uebungOutdoor;
-    }
 
     public Integer getUebungId() {
         return uebungId;
@@ -70,8 +61,7 @@ public class UebungenEntity implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UebungenEntity that = (UebungenEntity) o;
-        return uebungOutdoor == that.uebungOutdoor &&
-                Objects.equals(uebungId, that.uebungId) &&
+        return Objects.equals(uebungId, that.uebungId) &&
                 Objects.equals(uebungName, that.uebungName) &&
                 Objects.equals(uebungGewicht, that.uebungGewicht) &&
                 Objects.equals(uebungWiederholung, that.uebungWiederholung);
@@ -79,6 +69,6 @@ public class UebungenEntity implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(uebungId, uebungName, uebungGewicht, uebungWiederholung, uebungOutdoor);
+        return Objects.hash(uebungId, uebungName, uebungGewicht, uebungWiederholung);
     }
 }

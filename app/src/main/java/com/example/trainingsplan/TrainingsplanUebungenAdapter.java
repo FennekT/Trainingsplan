@@ -96,9 +96,8 @@ public class TrainingsplanUebungenAdapter extends ListAdapter<UebungenEntity, Tr
 
         public void bindTo(UebungenEntity uebungenEntity) {
             this.boundEntity = uebungenEntity;
-            tv.setText(uebungenEntity.getUebungName()); //TODO getUebungName gibt NULL aus
+            tv.setText(uebungenEntity.getUebungName());
 
-            tv.setText(uebungenEntity.getUebungId().toString());
             //TODO: image id zu Trainingsplan Entity hinzufuegen BONUS AUFGABE
 //            iv.setImageResource(trainingsplanEntity.image);
 

@@ -15,7 +15,7 @@ import com.example.trainingsplan.database.UebungenEntity;
 import java.io.Serializable;
 
 public class UebungenCreationActivity extends AppCompatActivity {
-  private  UebungenEntity uebungEntity;
+    private UebungenEntity uebungEntity;
     public static final String EXTRA_UEBUNG = "com.example.trainingsplan.UebungenCreationActivity.extra.Uebung";
 
     private TrainingsplanViewModel vm;
@@ -36,21 +36,14 @@ public class UebungenCreationActivity extends AppCompatActivity {
         gewichtView = findViewById(R.id.editGewicht);
         titelView = findViewById(R.id.editUebungTitel);
         wiederholungView = findViewById(R.id.editWiederholung);
-        CheckBox outdoorCheckbox = findViewById(R.id.outdoorCheckbox);
         // TODO get Extra um eine ggf. Mitgegebene Übung zu öffnen und bearbeiten zu können
-if ((UebungenEntity) getIntent().getSerializableExtra(EXTRA_UEBUNG)!=null){
+        if (getIntent().getSerializableExtra(EXTRA_UEBUNG) != null) {
 
-     uebungEntity = (UebungenEntity) getIntent().getSerializableExtra(EXTRA_UEBUNG);
-     //titelView.setText(uebungEntity.getUebungName());
-}
-else {
-     uebungEntity = new UebungenEntity();
+            uebungEntity = (UebungenEntity) getIntent().getSerializableExtra(EXTRA_UEBUNG);
+        } else {
+            uebungEntity = new UebungenEntity();
 
-}
-        gewichtView.setOnClickListener(v -> onGewicht(uebungEntity, gewichtView.getText().toString()));
-        titelView.setOnClickListener(v -> onTitel(uebungEntity, titelView.getText().toString()));
-        wiederholungView.setOnClickListener(v -> onWiederholung(uebungEntity, wiederholungView.getText().toString()));
-        outdoorCheckbox.setOnClickListener(v -> onOutdoor(uebungEntity, outdoorCheckbox.isChecked()));
+        }
         backButton.setOnClickListener(v -> finish());
         doneButton.setOnClickListener(v -> onDone(uebungEntity));
 
@@ -58,23 +51,11 @@ else {
     }
 
     private void onDone(UebungenEntity uebungenEntity) {
+        uebungenEntity.setUebungGewicht(Double.parseDouble(String.valueOf(gewichtView.getText())));
+        uebungenEntity.setUebungWiederholung(Integer.parseInt(String.valueOf(wiederholungView.getText())));
+        uebungenEntity.setUebungName(String.valueOf(titelView.getText()));
         vm.insertUebung(uebungenEntity);
         finish();
     }
 
-    private void onGewicht(UebungenEntity uebungenEntity, CharSequence gewicht) {
-        uebungenEntity.setUebungGewicht(Double.parseDouble((String) gewicht));
-    }
-
-    private void onTitel(UebungenEntity uebungenEntity, String titel) {
-        uebungenEntity.setUebungName(titel);
-    }
-
-    private void onWiederholung(UebungenEntity uebungenEntity, String wiederholung) {
-        uebungenEntity.setUebungWiederholung(Integer.parseInt(wiederholung));
-    }
-
-    private void onOutdoor(UebungenEntity uebungenEntity, Boolean outDoor) {
-        uebungenEntity.setUebungOutdoor(outDoor);
-    }
 }

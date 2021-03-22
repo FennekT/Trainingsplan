@@ -67,20 +67,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <CheckBox
-        android:id="@+id/outdoorCheckbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:autoText="false"
-        android:background="#454545"
-        android:backgroundTint="#454545"
-        android:text="Outdoor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editWiederholung"
-        app:layout_constraintVertical_bias="0.131" />
-
     <Button
         android:id="@+id/doneButton"
         android:layout_width="100dp"
