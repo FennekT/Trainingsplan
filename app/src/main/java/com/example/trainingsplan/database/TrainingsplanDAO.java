@@ -21,7 +21,7 @@ interface TrainingsplanDAO {
     void connectUebungen(List<TrainingsplanUebungenCrossRefEntity> connectedUebungen);
 
     @Delete
-    void deleteTrainingsplan(TrainingsplanEntity trainingsplanEntity);
+    void deleteTrainingsplan(List<TrainingsplanUebungenCrossRefEntity> connectedUebungen);
 
     @Transaction
     @Query("SELECT * FROM TrainingsplanEntity")

@@ -11,7 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trainingsplan.database.TrainingsplanViewModel;
 import com.example.trainingsplan.database.TrainingsplanWithUebungen;
+import com.example.trainingsplan.database.UebungenEntity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.Set;
 
 public class UebungenActivity extends AppCompatActivity {
 
@@ -42,6 +45,18 @@ public class UebungenActivity extends AppCompatActivity {
 //        //aktuallisiert view wenn neuer plan erstellt wird
 //        vm.getUebung().observe(this, adapter::submitList);
 
+        TrainingsplanWithUebungen openTrainingsplan = (TrainingsplanWithUebungen) getIntent().getSerializableExtra(EXTRA_TRAININGSPLAN);
+        if (null != openTrainingsplan) {
+            adapter.submitList(openTrainingsplan.uebungenEntities);
+            FloatingActionButton add = findViewById(R.id.floatingActionButton2);
+            add.setOnClickListener(v -> {
+                Set<UebungenEntity> selectedEntities = adapter.getSelectedEntities();
+                openTrainingsplan.uebungenEntities.addAll(selectedEntities);
+                vm.deleteTrainingsplanWithUebungen(openTrainingsplan);
+                finish();
+            });
+
+
         FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_uebung_btn);
         addButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, UebungenOverviewActivity.class);
@@ -52,4 +67,4 @@ public class UebungenActivity extends AppCompatActivity {
 
     //TODO: Uebung loeschbar machen
     //TODO Uebungen filtern im moment werden alle uebungen im Plan angezeit es sollen aber nur die sichtbar sein die in den Plan gehören
-}
+}}
