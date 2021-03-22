@@ -53,7 +53,7 @@ public class UebungenOverviewActivity extends AppCompatActivity implements Seria
             delete.setOnClickListener(v -> {
                 Set<UebungenEntity> selectedEntities = adapter.getSelectedEntities();
                 openTrainingsplan.uebungenEntities.addAll(selectedEntities);
-                vm.deleteUebungen(openTrainingsplan);
+                vm.deleteUebungen(selectedEntities);
             });
         if (null != openTrainingsplan) {
             adapter.submitList(openTrainingsplan.uebungenEntities);

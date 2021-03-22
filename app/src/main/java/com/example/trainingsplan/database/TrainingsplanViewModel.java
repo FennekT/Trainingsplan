@@ -48,13 +48,10 @@ public class TrainingsplanViewModel extends AndroidViewModel {
             trainingsplanDAO.deleteTrainingsplan(trainingsplanUebungenCrossRefEntities);
         });
     }
-public void deleteUebungen(TrainingsplanWithUebungen pojo) {
+public void deleteUebungen(Set<UebungenEntity> set) {
         TrainingsplanDatabase.databaseExecutor.execute(() -> {
-            trainingsplanDAO.addTrainingsplan(pojo.trainingsplanEntity);
-            List<UebungenEntity> trainingsplanUebungenCrossRefEntities = pojo.uebungenEntities.stream()
-                    .map(uebungenEntity -> new UebungenEntity())
-                    .collect(Collectors.toList());
-uebungenDAO.deleteUebung(trainingsplanUebungenCrossRefEntities);
+
+uebungenDAO.deleteUebungen(set);
         });
     }
 

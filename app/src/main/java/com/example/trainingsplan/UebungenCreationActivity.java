@@ -52,7 +52,7 @@ public class UebungenCreationActivity extends AppCompatActivity {
 
     private void onDone(UebungenEntity uebungenEntity) {
         uebungenEntity.setUebungGewicht(Double.parseDouble(String.valueOf(gewichtView.getText())));
-        uebungenEntity.setUebungWiederholung(Integer.parseInt(String.valueOf(wiederholungView.getText())));
+      uebungenEntity.setUebungWiederholung(Integer.parseInt(String.valueOf(wiederholungView.getText())));
         uebungenEntity.setUebungName(String.valueOf(titelView.getText()));
         vm.insertUebung(uebungenEntity);
         finish();
