@@ -5,21 +5,17 @@
     android:id="@+id/main_coordinator_layout_overview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#201F1F"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.Trainingsplan">
+        android:theme="@style/Theme.Trainingsplan.Toolbar">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:titleTextColor="@color/white"
-            android:background="@color/black"
-            app:popupTheme="@style/Theme.Trainingsplan" />
+            android:layout_height="?attr/actionBarSize" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

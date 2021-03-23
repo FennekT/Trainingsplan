@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#131313"
     android:padding="8dp"
     tools:context=".TrainingsplanCreationActivity">
 
@@ -16,8 +15,6 @@
         android:ems="10"
         android:hint="@string/Description"
         android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,8 +29,6 @@
         android:ems="10"
         android:hint="@string/Title"
         android:inputType="textPersonName"
-        android:textColor="#FAFAFA"
-        android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"

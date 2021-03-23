@@ -7,14 +7,13 @@
     android:layout_margin="8dp"
     android:layout_marginTop="4dp"
     android:layout_marginBottom="4dp"
+    style="@style/Theme.Trainingsplan.Card"
     app:cardCornerRadius="6dp"
-    app:cardElevation="2dp"
-    app:rippleColor="#EDE5E5">
+    app:cardElevation="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#040404"
         android:padding="8dp">
 
         <TextView
@@ -22,8 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="TextView"
-            android:textColor="#FFFFFF"
+            tools:text="TextView"
+            android:textColor="@color/primaryTextColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
