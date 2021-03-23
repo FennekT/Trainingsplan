@@ -3,6 +3,7 @@ package com.example.trainingsplan;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,9 +26,9 @@ public class UebungenCreationActivity extends AppCompatActivity {
     public static final String EXTRA_UEBUNG = "com.example.trainingsplan.UebungenCreationActivity.extra.Uebung";
 
     private TrainingsplanViewModel vm;
-    private TextView gewichtView;
-    private TextView titelView;
-    private TextView wiederholungView;
+    private EditText gewichtView;
+    private EditText titelView;
+    private EditText wiederholungView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,7 @@ public class UebungenCreationActivity extends AppCompatActivity {
             uebungenEntity.setUebungGewicht(Double.parseDouble(String.valueOf(gewichtView.getText())));
             uebungenEntity.setUebungWiederholung(Integer.parseInt(String.valueOf(wiederholungView.getText())));
         } catch (Exception e) {
+
             // TODO Hinweismeldung/Fehlertexte an die Inputs anhängen
             return;
         }
