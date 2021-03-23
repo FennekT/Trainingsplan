@@ -42,7 +42,7 @@ public class UebungenCreationActivity extends AppCompatActivity {
         titelView = findViewById(R.id.editUebungTitel);
         wiederholungView = findViewById(R.id.editWiederholung);
         if (getIntent().getSerializableExtra(EXTRA_UEBUNG) != null) {
-
+            setTitle("Bearbeite eine Übung");
             uebungEntity = (UebungenEntity) getIntent().getSerializableExtra(EXTRA_UEBUNG);
             gewichtView.setText(String.valueOf(uebungEntity.getUebungGewicht()));
             wiederholungView.setText(String.valueOf(uebungEntity.getUebungWiederholung()));
