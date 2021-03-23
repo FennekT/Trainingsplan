@@ -66,7 +66,15 @@ public class UebungenCreationActivity extends AppCompatActivity {
             uebungenEntity.setUebungWiederholung(Integer.parseInt(String.valueOf(wiederholungView.getText())));
         } catch (Exception e) {
 
-            // TODO Hinweismeldung/Fehlertexte an die Inputs anhängen
+            if (gewichtView.length() == 0) {
+                gewichtView.setError("Bitte ausfüllen");
+            }
+            if (titelView.length() == 0) {
+                titelView.setError("Bitte ausfüllen");
+            }
+            if (wiederholungView.length() == 0){
+                wiederholungView.setError("Bitte ausfüllen");
+            }
             return;
         }
 
