@@ -97,8 +97,6 @@ public class TrainingsplanUebungenAdapter extends ListAdapter<UebungenEntity, Tr
             }
 
             //TODO: image id zu Trainingsplan Entity hinzufuegen BONUS AUFGABE
-//            iv.setImageResource(trainingsplanEntity.image);
-
         }
     }
 

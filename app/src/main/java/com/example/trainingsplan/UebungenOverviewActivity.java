@@ -55,7 +55,7 @@ public class UebungenOverviewActivity extends AppCompatActivity implements Seria
         ViewModelProvider.AndroidViewModelFactory factory = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
         vm = new ViewModelProvider(this, factory).get(TrainingsplanViewModel.class);
         //aktuallisiert view wenn neuer plan erstellt wird
-        vm.getUebung().observe(this, adapter::submitList);
+        vm.getUebungen().observe(this, adapter::submitList);
 
         TrainingsplanWithUebungen openTrainingsplan = (TrainingsplanWithUebungen) getIntent().getSerializableExtra(EXTRA_TRAININGSPLAN);
 

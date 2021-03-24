@@ -2,20 +2,13 @@ package com.example.trainingsplan;
 
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.room.util.StringUtil;
 
-import com.example.trainingsplan.database.TrainingsplanEntity;
 import com.example.trainingsplan.database.TrainingsplanViewModel;
 import com.example.trainingsplan.database.UebungenEntity;
-
-import java.io.Serializable;
 
 /**
  * Activity zur Erstellung einer Uebung. Diese Activity oeffnet sich auch, wenn man eine
@@ -26,9 +19,10 @@ public class UebungenCreationActivity extends AppCompatActivity {
     public static final String EXTRA_UEBUNG = "com.example.trainingsplan.UebungenCreationActivity.extra.Uebung";
 
     private TrainingsplanViewModel vm;
-    private EditText gewichtView;
-    private EditText titelView;
-    private EditText wiederholungView;
+    private EditText weightView;
+    private EditText titleView;
+    private EditText repetitionsView;
+    private String errorString = "Bitte ausfüllen";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,15 +33,15 @@ public class UebungenCreationActivity extends AppCompatActivity {
         vm = new ViewModelProvider(this, factory).get(TrainingsplanViewModel.class);
         Button backButton = findViewById(R.id.backbtn);
         Button doneButton = findViewById(R.id.doneButton);
-        gewichtView = findViewById(R.id.editGewicht);
-        titelView = findViewById(R.id.editUebungTitel);
-        wiederholungView = findViewById(R.id.editWiederholung);
+        weightView = findViewById(R.id.editGewicht);
+        titleView = findViewById(R.id.editUebungTitel);
+        repetitionsView = findViewById(R.id.editWiederholung);
         if (getIntent().getSerializableExtra(EXTRA_UEBUNG) != null) {
             setTitle("Bearbeite eine Übung");
             uebungEntity = (UebungenEntity) getIntent().getSerializableExtra(EXTRA_UEBUNG);
-            gewichtView.setText(String.valueOf(uebungEntity.getUebungGewicht()));
-            wiederholungView.setText(String.valueOf(uebungEntity.getUebungWiederholung()));
-            titelView.setText(uebungEntity.getUebungName());
+            weightView.setText(String.valueOf(uebungEntity.getUebungGewicht()));
+            repetitionsView.setText(String.valueOf(uebungEntity.getUebungWiederholung()));
+            titleView.setText(uebungEntity.getUebungName());
 
         } else {
             uebungEntity = new UebungenEntity();
@@ -61,25 +55,26 @@ public class UebungenCreationActivity extends AppCompatActivity {
 
     private void onDone(UebungenEntity uebungenEntity) {
         try {
-            uebungenEntity.setUebungName(String.valueOf(titelView.getText()));
-            uebungenEntity.setUebungGewicht(Double.parseDouble(String.valueOf(gewichtView.getText())));
-            uebungenEntity.setUebungWiederholung(Integer.parseInt(String.valueOf(wiederholungView.getText())));
+            uebungenEntity.setUebungName(String.valueOf(titleView.getText()));
+            uebungenEntity.setUebungGewicht(Double.parseDouble(String.valueOf(weightView.getText())));
+            uebungenEntity.setUebungWiederholung(Integer.parseInt(String.valueOf(repetitionsView.getText())));
         } catch (Exception e) {
 
-            if (gewichtView.length() == 0) {
-                gewichtView.setError("Bitte ausfüllen");
+            if (weightView.length() == 0) {
+                weightView.setError(errorString);
             }
-            if (titelView.length() == 0) {
-                titelView.setError("Bitte ausfüllen");
+            if (titleView.length() == 0) {
+                titleView.setError(errorString);
             }
-            if (wiederholungView.length() == 0){
-                wiederholungView.setError("Bitte ausfüllen");
+            if (repetitionsView.length() == 0) {
+                repetitionsView.setError(errorString);
             }
             return;
         }
-
+        //wenn ID zur Uebung bereits vorhanden, dann soll die Uebung geupdated werden
         if (uebungenEntity.getUebungId() != null) {
             vm.updateUebung(uebungenEntity);
+        //andernfalls soll eine neue Uebung erstellt werden
         } else {
             vm.insertUebung(uebungenEntity);
         }

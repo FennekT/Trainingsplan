@@ -26,7 +26,7 @@ public interface UebungenDAO {
     void updateUebung(UebungenEntity uebungenEntity);
 
     @Query("SELECT * FROM UebungenEntity")
-    LiveData<List<UebungenEntity>> getUebung();
+    LiveData<List<UebungenEntity>> getUebungen();
 
     @Query("SELECT * FROM UebungenEntity as u " +
             "INNER JOIN TrainingsplanUebungenCrossRefEntity as t on u.uebungId = t.uebungId " +

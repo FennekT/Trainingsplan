@@ -39,8 +39,8 @@ public class TrainingsplanActivity extends AppCompatActivity {
         vm.getTrainingsplanList().observe(this, adapter::submitList);
 
         Intent intent = new Intent(this, TrainingsplanCreationActivity.class);
-        FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_btn);
-        addButton.setOnClickListener(v ->
+        FloatingActionButton newTrainingsplanButton = findViewById(R.id.add_trainingsplan_btn);
+        newTrainingsplanButton.setOnClickListener(v ->
                 startActivity(intent));
         //TODO: Trainingsplan loeschbar machen
 

@@ -51,23 +51,18 @@ public class TrainingsplanUebungenActivity extends AppCompatActivity {
             vm.getUebungenForTrainingsplan(openTrainingsplan).observe(this, adapter::submitList);
         }
 
-//        //aktuallisiert view wenn neuer plan erstellt wird
-//        vm.getUebung().observe(this, adapter::submitList);
-
         TrainingsplanWithUebungen openTrainingsplan = (TrainingsplanWithUebungen) getIntent().getSerializableExtra(EXTRA_TRAININGSPLAN);
         if (null != openTrainingsplan) {
             adapter.submitList(openTrainingsplan.uebungenEntities);
-            setTitle("Trainingsplan: "+openTrainingsplan.trainingsplanEntity.getTrainingsplanTitle());
-            FloatingActionButton addButton = findViewById(R.id.add_trainingsplan_uebung_btn);
-            addButton.setOnClickListener(v -> {
+            setTitle("Trainingsplan: " + openTrainingsplan.trainingsplanEntity.getTrainingsplanTitle());
+            FloatingActionButton addUebungToTrainingsplanBtn = findViewById(R.id.add_trainingsplan_uebung_btn);
+            addUebungToTrainingsplanBtn.setOnClickListener(v -> {
                 Intent intent = new Intent(this, UebungenOverviewActivity.class);
                 intent.putExtra(UebungenOverviewActivity.EXTRA_TRAININGSPLAN, openTrainingsplan);
                 startActivity(intent);
             });
         }
 
-        //TODO: Uebung loeschbar machen
-        //TODO Uebungen filtern im moment werden alle uebungen im Plan angezeit es sollen aber nur die sichtbar sein die in den Plan gehören
     }
 
     @Override

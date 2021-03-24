@@ -17,9 +17,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button trainingsplan = findViewById(R.id.trainingsplan);
-        //Noch nicht implementiert
-        //Button kalendar = findViewById(R.id.Kalendar);
-        //Button wasserkonsum = findViewById(R.id.Wasserkonsum);
         trainingsplan.setOnClickListener(this);
 
     }

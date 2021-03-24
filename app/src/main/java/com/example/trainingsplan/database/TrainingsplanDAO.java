@@ -31,7 +31,4 @@ interface TrainingsplanDAO {
     @Query("SELECT * FROM TrainingsplanEntity")
     LiveData<List<TrainingsplanWithUebungen>> getTrainingsplan();
 
-    @Transaction
-    @Query("SELECT * FROM TrainingsplanEntity")
-    LiveData<List<TrainingsplanWithUebungen>> getTrainingsplanWithUebungen();
 }
